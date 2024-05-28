@@ -4,8 +4,8 @@ import { provideAuth0 } from '@auth0/auth0-angular';
 import { AppComponent } from './app/app.component';
 
 appConfig.providers.push(provideAuth0({
-  domain: 'YOUR_DOMAIN',
-  clientId: 'YOUR_CLIENT',
+  domain: '',
+  clientId: '',
   authorizationParams: {
     redirect_uri: window.location.origin
   }
