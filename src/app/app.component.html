@@ -1,11 +1,42 @@
-<h1>Jadson Mezzari Dagostin</h1>
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<mat-toolbar>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Teatime App</span>
+  <span class="example-spacer"></span>
+  <span *ngIf="this.auth.user$ | async as user">
+    {{ user.nickname }}
+  </span>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+    matTooltip="Fazer login"
+    matTooltipPosition="above"
+    matTooltipHideDelay="500"
+    (click)="login()"
+    *ngIf="!(this.auth.isAuthenticated$ | async)"
+  >
+    <mat-icon>login</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+    matTooltip="Fazer logout"
+    matTooltipPosition="above"
+    matTooltipHideDelay="500"
+    (click)="logout()"
+    *ngIf="this.auth.isAuthenticated$ | async"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
 
+<h1>Jadson Mezzari Dagostin</h1>
 
 <router-outlet></router-outlet>

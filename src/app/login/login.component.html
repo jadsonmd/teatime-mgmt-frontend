@@ -1,20 +1,30 @@
-<p>login works!</p>
-
-<div>
+<div class="login">
+  <h3>login works</h3>
+  <!-- <button mat-raised-button appearance="outline" (click)="login()">Login</button> -->
+  <!-- <h2>Faça Seu Login</h2> 
+  <p>
+      <mat-form-field appearance="outline">
+        <mat-label>Usuário</mat-label>
+        <input matInput placeholder="Digite seu usuário">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>
     <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Fill form field</mat-label>
-          <input matInput placeholder="Placeholder">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Outline form field</mat-label>
-          <input matInput placeholder="Placeholder">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hint</mat-hint>
-        </mat-form-field>
-      </p>
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+
+        <mat-hint>Hint</mat-hint>
+      </mat-form-field>
+    </p>
+    <div class="example-button-row">
+      <button mat-raised-button appearance="outline" >Basic</button>
+      <button mat-raised-button appearance="outline" color="primary">Primary</button>
+      <button mat-raised-button color="second">Accent</button>
+      <button type="submit">Accent</button>
+     </div> -->
 </div>
