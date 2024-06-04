@@ -1,20 +1,21 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <button
     mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
+    class="teatime-icon"
+    aria-label="teatime icon-button with menu icon"
+    (click)="drawer.toggle()"
   >
     <mat-icon>menu</mat-icon>
   </button>
   <span>Teatime App</span>
-  <span class="example-spacer"></span>
+  <span class="teatime-spacer"></span>
   <span *ngIf="this.auth.user$ | async as user">
     {{ user.nickname }}
   </span>
   <button
     mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
+    class="teatime-icon"
+    aria-label="teatime icon-button with share icon"
     matTooltip="Fazer login"
     matTooltipPosition="above"
     matTooltipHideDelay="500"
@@ -25,8 +26,8 @@
   </button>
   <button
     mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
+    class="teatime-icon"
+    aria-label="teatime icon-button with share icon"
     matTooltip="Fazer logout"
     matTooltipPosition="above"
     matTooltipHideDelay="500"
@@ -37,6 +38,15 @@
   </button>
 </mat-toolbar>
 
-<h1>Jadson Mezzari Dagostin</h1>
+<mat-drawer-container class="teatime-container" autosize>
 
-<router-outlet></router-outlet>
+  <mat-drawer #drawer class="teatime-sidenav-menu" mode="side" >
+    <app-tree-menu></app-tree-menu>
+  </mat-drawer>
+
+  <div class="teatime-sidenav-content">
+    <h5>Jadson Mezzari Dagostin</h5>
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>

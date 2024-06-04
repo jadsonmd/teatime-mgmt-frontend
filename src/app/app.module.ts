@@ -12,10 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { TreeMenuComponent } from './tree-menu/tree-menu.component';
+import { MatTreeModule } from '@angular/material/tree';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TreeMenuComponent],
   imports: [
     BrowserModule,
     CommonModule,
@@ -25,7 +28,9 @@ import { MatTooltip } from '@angular/material/tooltip';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltip
+    MatTooltip,
+    MatSidenavModule,
+    MatTreeModule
   ],
   providers: [
     {
