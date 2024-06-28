@@ -1,21 +1,20 @@
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
+import { AuthModule, authHttpInterceptorFn, provideAuth0,  } from '@auth0/auth0-angular';
 import { environment as env } from '../environments/enviroment';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { TreeMenuComponent } from './tree-menu/tree-menu.component';
+import { TreeMenuComponent } from './component/tree-menu/tree-menu.component';
 import { MatTreeModule } from '@angular/material/tree';
-
 
 @NgModule({
   declarations: [AppComponent, TreeMenuComponent],
@@ -24,7 +23,7 @@ import { MatTreeModule } from '@angular/material/tree';
     CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AuthModule.forRoot({...env.auth, httpInterceptor: {...env.httpInterceptor}}),
+    HttpClientModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
@@ -33,15 +32,33 @@ import { MatTreeModule } from '@angular/material/tree';
     MatTreeModule
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthHttpInterceptor,
-      multi: true,
-    },
-    {
-      provide: Window,
-      useValue: window,
-    }
+    provideHttpClient(withInterceptors([authHttpInterceptorFn])),
+    provideAuth0({
+      // The domain and clientId were configured in the previous chapter
+      domain: env.auth.domain,
+      clientId: env.auth.clientId,
+    
+      authorizationParams: {
+        redirect_uri: window.location.origin,
+        // Request this audience at user authentication time
+        audience: env.auth.authorizationParams.audience,
+        // Request this scope at user authentication time
+        scope: 'read:current_user',
+      },
+    
+      // Specify configuration for the interceptor              
+      httpInterceptor: {
+        allowedList: [
+          {
+            // Match any request that starts 'https://localhost:8080/api/v2/' (note the asterisk)
+            uri: `${window.location.origin}/*`,
+            tokenOptions: {
+              authorizationParams: env.auth.authorizationParams,
+            }
+          }
+        ]
+      }
+    })
   ],
   bootstrap: [AppComponent]
 })

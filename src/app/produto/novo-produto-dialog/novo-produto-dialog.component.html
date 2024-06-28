@@ -1,0 +1,57 @@
+<mat-dialog-content>
+  <h2 mat-dialog-title>{{ title }}</h2>
+
+  <form class="novo-produto-form" (onSubmit)="onSubmit()">
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>Código produto</mat-label>
+        <input color="primary" matInput [(ngModel)]="produto.codigo" name="produto.codigo" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>Marca</mat-label>
+        <input color="primary" matInput [(ngModel)]="produto.marca" name="produto.marca"/>
+      </mat-form-field>
+    </div>
+
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="full-size">
+        <mat-label>Nome</mat-label>
+        <input color="primary" matInput  [(ngModel)]="produto.nome" name="produto.nome" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Estoque mínimo</mat-label>
+        <input type="number" color="primary" matInput  [(ngModel)]="produto.estoqueMin" name="produto.estoqueMin" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Estoque máximo</mat-label>
+        <input type="number" color="primary" matInput  [(ngModel)]="produto.estoqueMax" name="produto.estoqueMax" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Preço venda</mat-label>
+        <input type="number" color="primary" matInput  [(ngModel)]="produto.precoVenda" name="produto.precoVenda" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>Tipo produto</mat-label>
+        <mat-select [(value)]="produto.idTipoProduto" name="produto.idTipoProduto">
+          <mat-option value="1">Caixa</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>Espécie produto</mat-label>
+        <mat-select [(ngModel)]="produto.idEspecieProduto" name="produto.idEspecieProduto">
+          <mat-option value="2">Reagente</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="fecharModal()">Cancelar</button>
+  <button mat-button cdkFocusInitial (click)="onSubmit()">Salvar</button>
+</mat-dialog-actions>

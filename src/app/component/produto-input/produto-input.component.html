@@ -1,0 +1,17 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Produtos</mat-label>
+    <input
+      matInput
+      aria-label="Produto"
+      required
+      [matAutocomplete]="auto"
+      [formControl]="stateCtrl"
+    />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="selecionaProduto($event.option.value)">
+      <mat-option *ngFor="let prod of filteredProdutos | async;"  [value]="prod">
+        <span>{{ prod.codigo }} - {{ prod.nome }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
