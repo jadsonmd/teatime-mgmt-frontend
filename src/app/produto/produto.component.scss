@@ -1,0 +1,30 @@
+
+.center-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    .mat-elevation-z8 {
+        background: darkorchid;
+        // margin-left: 10px;
+        button {
+            background: darkorchid;
+            border: none;
+            mat-icon {
+                color: white;
+            }
+        }
+    }
+}
+
+.menu-botoes {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    display: flex;
+    text-align: right;
+    justify-content: right;
+}
+
+h2 {
+    margin-left: 15px;
+}

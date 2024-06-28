@@ -1,0 +1,71 @@
+<div class="center-div">
+  <h1>Incluir Estoque</h1>
+
+  <form class="incluir-estoque-form" (onSubmit)="onSubmit()">
+    <div class="produto-input">
+      <app-produto-input (produtoSelecionadoEvent)="selecionaProduto($event)"></app-produto-input>
+    </div>
+
+    <div class="form-fields">
+      <mat-form-field appearance="outline" >
+        <mat-label>Lote produto</mat-label>
+        <input
+          color="primary"
+          matInput
+          [(ngModel)]="produtoItem.lote"
+          name="produtoItem.lote"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline" >
+        <mat-label>Data validade</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="produtoItem.dataValidade"
+          name="produtoItem.dataValidade"
+          required
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="form-fields">
+      <mat-form-field appearance="outline" >
+        <mat-label>Quantidade</mat-label>
+        <input
+          type="number"
+          color="primary"
+          matInput
+          [(ngModel)]="produtoItem.qtd"
+          name="produtoItem.qtd"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline" >
+        <mat-label>Preço compra</mat-label>
+        <input
+          type="number"
+          color="primary"
+          matInput
+          [(ngModel)]="produtoItem.precoCompra"
+          name="produtoItem.precoCompra"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <!-- <div class="em-uso-input">
+      <mat-slide-toggle [(ngModel)]="produtoItem.inUso" name="produtoItem.inUso">Em uso</mat-slide-toggle>
+    </div> -->
+    <div class="actions">
+      <button mat-button (click)="limparCampos()">Limpar</button>
+      <button mat-flat-button color="primary" (click)="onSubmit()">
+        Salvar
+      </button>
+    </div>
+  </form>
+</div>

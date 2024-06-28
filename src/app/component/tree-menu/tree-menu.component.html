@@ -3,8 +3,8 @@
 </div>
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" style="background-color: darkorchid;">
     <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding class="mat-tree-menu-item">
-      <button mat-icon-button disabled></button>
-      {{node.name}}
+      <button mat-button (click)="abrir(node.link)">{{node.name}}</button>
+      <!-- <a mat-link routerLink="node.link">{{node.name}}</a> -->
     </mat-tree-node>
     <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
       <button mat-icon-button matTreeNodeToggle

@@ -41,12 +41,19 @@
 <mat-drawer-container class="teatime-container" autosize>
 
   <mat-drawer #drawer class="teatime-sidenav-menu" mode="side" >
-    <app-tree-menu></app-tree-menu>
+    <app-tree-menu *ngIf="auth.isAuthenticated$ | async"></app-tree-menu>
   </mat-drawer>
 
-  <div class="teatime-sidenav-content">
-    <h5>Jadson Mezzari Dagostin</h5>
-    <router-outlet></router-outlet>
-  </div>
+  <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <div class="teatime-sidenav-content">
+      <router-outlet></router-outlet>
+    </div> 
+  </ng-container>
+
+  <ng-template #loggedOut>
+    <div class="teatime-sidenav-content">
+      <h3 style="margin-left: 15px;">Faça login para acessar o conteúdo</h3>
+    </div>
+  </ng-template>
 
 </mat-drawer-container>

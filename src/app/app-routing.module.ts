@@ -8,6 +8,21 @@ const routes: Routes = [
       (await import('./login/login.module')).LoginModule
   },
   {
+    path: 'produto',
+    loadChildren: async () =>
+      (await import('./produto/produto.module')).ProdutoModule
+  },
+  {
+    path: 'produto/incluir-estoque',
+    loadChildren: async () =>
+      (await import('./produto/incluir-estoque/incluir-estoque.module')).IncluirEstoqueModule
+  },
+  {
+    path: 'produto/baixar-estoque',
+    loadChildren: async () =>
+      (await import('./produto/baixar-estoque/baixar-estoque.module')).BaixarEstoqueModule
+  },
+  {
     path: '**',
     redirectTo: 'inicio',
     pathMatch: 'full'

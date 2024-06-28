@@ -1,0 +1,46 @@
+<div class="center-div">
+    <h1>Baixar Estoque</h1>
+  
+    <form class="baixar-estoque-form" (onSubmit)="onSubmit()">
+      <div class="produto-input">
+        <app-produto-input
+          (produtoSelecionadoEvent)="selecionaProduto($event)"
+          ></app-produto-input>
+      </div>
+
+      <div class="actions">
+        <button mat-button (click)="buscarItensProduto()">
+          Buscar itens
+        </button>
+      </div>
+
+      <div class="form-fields">
+        <mat-selection-list #itens [multiple]="false" (selectionChange)="getItemSelecionado(itens.selectedOptions.selected)">
+          <mat-list-option *ngFor="let item of produtoItens" [value]="item">{{item.lote}} - {{item.quantidade}}</mat-list-option>
+        </mat-selection-list>
+      </div>
+
+      <br/>
+
+      <div class="form-fields">
+        <mat-form-field appearance="outline" >
+          <mat-label>Quantidade</mat-label>
+          <input
+            type="number"
+            color="primary"
+            matInput
+            [(ngModel)]="produtoItem.qtd"
+            name="produtoItem.qtd"
+            required
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="actions">
+        <button mat-flat-button color="primary" (click)="onSubmit()">
+          Salvar
+        </button>
+      </div>
+
+    </form>
+</div>

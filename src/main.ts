@@ -5,13 +5,13 @@ import { provideAuth0, } from '@auth0/auth0-angular';
 import { AppComponent } from './app/app.component';
 import { AppModule } from './app/app.module';
 
-appConfig.providers.push(provideAuth0({
-  domain: '',
-  clientId: '',
-  authorizationParams: {
-    redirect_uri: window.location.origin
-  }
-}));
+// appConfig.providers.push(provideAuth0({
+//   domain: '',
+//   clientId: '',
+//   authorizationParams: {
+//     redirect_uri: window.location.origin
+//   }
+// }));
 
 // bootstrapApplication(AppComponent, appConfig);
 

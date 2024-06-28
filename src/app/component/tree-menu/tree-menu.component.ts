@@ -3,6 +3,7 @@ import { TreeMenu } from './tree-menu';
 import { MenuFlatNode } from './menu-flat-node';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tree-menu',
@@ -14,23 +15,28 @@ export class TreeMenuComponent {
   TREE_DATA: TreeMenu[] = [
     {
       name: 'Produto',
+      link: 'produto',
       children: [
-        { name: 'Produto' },
-        { name: 'Incluir estoque' },
-        { name: 'Baixar estoque' },
+        { name: 'Produto', link: '/produto' },
+        { name: 'Incluir estoque', link: '/produto/incluir-estoque'},
+        { name: 'Baixar estoque', link: '/produto/baixar-estoque'},
       ],
     },
     {
       name: 'Financeiro',
+      link: '/',
       children: [
         {
           name: 'Incluir Receita',
+          link: '/',
         },
         {
           name: 'Incluir Despesa',
+          link: '/',
         },
         {
           name: 'Relatorio',
+          link: '/',
         },
       ],
     },
@@ -41,6 +47,7 @@ export class TreeMenuComponent {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
       level: level,
+      link: node.link,
     };
   };
 
@@ -58,9 +65,13 @@ export class TreeMenuComponent {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor() {
+  constructor(private router: Router) {
     this.dataSource.data = this.TREE_DATA;
   }
 
   hasChild = (_: number, node: MenuFlatNode) => node.expandable;
+
+  abrir(link: string) {
+    this.router.navigate([link]);
+  }
 }
