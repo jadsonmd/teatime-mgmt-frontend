@@ -13,6 +13,18 @@
             mat-form-field {
                 width: 48%;
             }
+            mat-selection-list {
+                width: 100%;
+                mat-list-option {
+                    width: 100%;
+                    div {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+
+                    }
+                }
+            }
         }
         .actions {
             display: flex;

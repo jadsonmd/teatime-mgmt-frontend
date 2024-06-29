@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [ProdutoComponent, NovoProdutoDialogComponent],
   imports: [
     FormsModule,
+    CommonModule,
     ProdutoRoutingModule,
     MatTableModule,
     MatIconModule,
