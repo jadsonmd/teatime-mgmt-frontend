@@ -30,12 +30,13 @@ export class BaixarEstoqueComponent {
   constructor(private produtoService: ProdutoService) {}
 
   buscarItensProduto(): void {
-    this.produtoService
+    if (this.prod && this.prod.id) {
+      this.produtoService
       .getAllProdutoItens(this.prod.id)
       .subscribe((data) => {
         this.produtoItens = data.filter((p) => p.quantidade > 0);
-        console.log(this.produtoItens);
-      });
+      }); 
+    }
   }
 
   onSubmit(): void {
