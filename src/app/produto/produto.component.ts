@@ -4,6 +4,7 @@ import { ProdutoItem } from './produto-item';
 import { NovoProdutoDialogComponent } from './novo-produto-dialog/novo-produto-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NovoProduto } from './novo-produto-dialog/novo-produto';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-produto',
@@ -25,7 +26,8 @@ export class ProdutoComponent implements OnInit {
 
   constructor(
     private produtoService: ProdutoService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -34,17 +36,21 @@ export class ProdutoComponent implements OnInit {
       .subscribe((produto) => (this.dataSource = produto));
   }
 
-  openDialog(produto: ProdutoItem | {} ): void {
-    const dialogRef = this.dialog.open(
-      NovoProdutoDialogComponent, { width: '700px',
-        data: produto,
-      }
-    );
+  openDialog(produto: ProdutoItem | {}): void {
+    const dialogRef = this.dialog.open(NovoProdutoDialogComponent, {
+      width: '700px',
+      data: produto,
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.produtoService
-      .findAll()
-      .subscribe((produto) => (this.dataSource = produto));
+      if ('salvar' === result) {
+        console.log('Produto salvo com sucesso.');
+        this.produtoService
+        .findAll()
+        .subscribe((produto) => (this.dataSource = produto));
+
+        this.openSnackBar('Produto salvo com sucesso.', 'OK', 'success');
+      }
     });
   }
 
@@ -57,13 +63,33 @@ export class ProdutoComponent implements OnInit {
     this.openDialog(produto);
   }
 
-  apagar(produto: ProdutoItem): void {
-    console.log('apagar', produto.idProduto);
-    
-    this.produtoService.deleteProduto(produto.idProduto).subscribe(() => {
-      this.produtoService
-      .findAll()
-      .subscribe((produto) => (this.dataSource = produto));
+  openSnackBar(msg: string, btn: string, tipo: string): void {
+    this.snackBar.open(msg, btn, {
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      duration: 5000,
+      panelClass: tipo,
     });
+  }
+
+  apagar(produto: ProdutoItem): void {
+    if (!produto.idProdutoItem) {
+      this.produtoService.deleteProduto(produto.idProduto).subscribe(() => {
+        this.produtoService
+          .findAll()
+          .subscribe((produto) => (this.dataSource = produto));
+          this.openSnackBar(
+            `Produto, código: ${produto.codigo}, excluído com sucesso.`,
+            'OK',
+            'success'
+          );  
+      });
+    } else {
+      this.openSnackBar(
+        `Esse produto, código: ${produto.codigo}, já contém item(ns), não será possível excluí-lo.`,
+        'OK',
+        'alert'
+      );
+    }
   }
 }

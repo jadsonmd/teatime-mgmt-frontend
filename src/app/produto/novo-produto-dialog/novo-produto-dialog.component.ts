@@ -49,7 +49,7 @@ export class NovoProdutoDialogComponent {
         .updateProduto(this.produto)
         .subscribe((prod: ProdutoItem) => {
           if (prod) {
-            this.fecharModal();
+            this.fecharModal('salvar');
           }
         });
     } else {
@@ -58,13 +58,18 @@ export class NovoProdutoDialogComponent {
         .saveProduto(this.produto)
         .subscribe((prod: ProdutoItem) => {
           if (prod) {
-            this.fecharModal();
+            this.fecharModal('salvar');
           }
         });
     }
   }
 
-  fecharModal(): void {
-    this.dialogRef.close();
+  cancelar(): void {
+    this.fecharModal('cancelar');
+  }
+
+  fecharModal(action: string): void {
+    console.log('tste');
+    this.dialogRef.close(action);
   }
 }

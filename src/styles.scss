@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.error {
+  simple-snack-bar {
+    background-color: red;
+    .mat-mdc-snack-bar-label {
+        font-weight: 600;
+        color: white;
+    }
+  }
+}
+
+.alert {
+  simple-snack-bar {
+    background-color: yellow;
+    .mat-mdc-snack-bar-label {
+        font-weight: 600;
+    }
+  }
+}
+
+.success {
+  simple-snack-bar {
+    background-color: green;
+    .mat-mdc-snack-bar-label {
+        font-weight: 600;
+        color: white;
+    }
+  }
+}

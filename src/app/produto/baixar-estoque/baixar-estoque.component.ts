@@ -3,8 +3,8 @@ import { Produto } from '../produto';
 import { GerenciarEstoqueDTO } from '../gerenciar-estoque-dto';
 import { ProdutoService } from '../../service/produto.service';
 import { ProdutoItemEntity } from '../produto-item-entity';
-import { ProdutoItem } from '../produto-item';
 import { MatListOption } from '@angular/material/list';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-baixar-estoque',
@@ -27,7 +27,10 @@ export class BaixarEstoqueComponent {
 
   prod!: Produto;
 
-  constructor(private produtoService: ProdutoService) {}
+  constructor(
+    private produtoService: ProdutoService,
+    private snackBar: MatSnackBar
+  ) {}
 
   buscarItensProduto(): void {
     if (this.prod && this.prod.id) {
@@ -41,7 +44,6 @@ export class BaixarEstoqueComponent {
 
   onSubmit(): void {
     if (this.produtoItemSelecionado && this.produtoItemSelecionado.idProduto === this.prod.id) {
-      console.log(this.produtoItemSelecionado);
       this.produtoItem = {
         idProduto: this.produtoItemSelecionado.idProduto,
         idProdutoItem: this.produtoItemSelecionado.id,
@@ -53,11 +55,11 @@ export class BaixarEstoqueComponent {
       };
       this.produtoService.baixarEstoque(this.produtoItem).subscribe((data) => {
         if (data) {
-          alert('Estoque baixado com sucesso!'); 
+          this.openSnackBar('Estoque baixado com sucesso!', 'OK', 'success');
         }
       });
     } else {
-      alert('O produto selecionado não é o mesmo do item selecionado. Refaça a consulta!'); 
+      this.openSnackBar('O produto selecionado não é o mesmo do item selecionado. Refaça a consulta!', 'OK', 'alert');
     }
   }
 
@@ -70,4 +72,12 @@ export class BaixarEstoqueComponent {
     console.log(this.produtoItemSelecionado);
   }
 
+  openSnackBar(msg: string, btn: string, tipo: string): void {
+    this.snackBar.open(msg, btn, {
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      duration: 5000,
+      panelClass: tipo
+    });
+  }
 }

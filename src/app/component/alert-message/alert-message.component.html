@@ -1,1 +1,12 @@
-<p>alert-message works!</p>
+<div class="alert-message">
+  <span class="example-pizza-party" matSnackBarLabel> Pizza party!!! </span>
+  <span matSnackBarActions>
+    <button
+      mat-button
+      matSnackBarAction
+      (click)="snackBarRef.dismissWithAction()"
+    >
+      OK
+    </button>
+  </span>
+</div>
