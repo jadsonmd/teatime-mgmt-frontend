@@ -12,10 +12,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { TransferirEstoqueDialogComponent } from './transferir-estoque-dialog/transferir-estoque-dialog.component';
 
 
 @NgModule({
-  declarations: [EstoqueComponent],
+  declarations: [EstoqueComponent, TransferirEstoqueDialogComponent ],
   imports: [
     FormsModule,
     CommonModule,
@@ -24,6 +25,11 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
+    
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class EstoqueModule { }

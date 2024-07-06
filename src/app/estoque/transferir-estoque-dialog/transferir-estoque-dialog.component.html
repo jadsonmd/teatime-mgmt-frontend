@@ -1,1 +1,43 @@
-<p>transferir-estoque-dialog works!</p>
+<mat-dialog-content>
+  <h2 mat-dialog-title>Transferir estoque</h2>
+
+  <form class="transferencia-form" (onSubmit)="onSubmit()">
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>Unidade destino</mat-label>
+        <mat-select
+          [(ngModel)]="transferirEstoque.idUnidadeDestino"
+          name="transferirEstoque.idUnidadeDestino"
+        >
+          <mat-option value="2">Filial</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>Quantidade</mat-label>
+        <input
+          color="primary"
+          matInput
+          [(ngModel)]="transferirEstoque.quantidade"
+          name="transferirEstoque.quantidade"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="full-size">
+        <mat-label>Observacao</mat-label>
+        <input
+          color="primary"
+          matInput
+          [(ngModel)]="transferirEstoque.observacao"
+          name="transferirEstoque.observacao"
+        />
+      </mat-form-field>
+    </div>
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button cdkFocusInitial (click)="onSubmit()">Salvar</button>
+</mat-dialog-actions>
