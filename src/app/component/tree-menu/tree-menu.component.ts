@@ -23,6 +23,13 @@ export class TreeMenuComponent {
       ],
     },
     {
+      name: 'Estoque',
+      link: 'produto',
+      children: [
+        { name: 'Estoque unidade', link: '/estoque/estoque-unidade' },
+      ],
+    },
+    {
       name: 'Financeiro',
       link: '/',
       children: [

@@ -7,12 +7,14 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Produto } from '../produto/produto';
 import { GerenciarEstoqueDTO } from '../produto/gerenciar-estoque-dto';
 import { ProdutoItemEntity } from '../produto/produto-item-entity';
+import { TransferenciaEstoqueList } from '../estoque/transferencia-estoque-list';
+import { TransferirEstoqueDTO } from '../estoque/transferir-estoque-dto';
+import { ReceberEstoqueDTO } from '../estoque/receber-estoque-dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProdutoService {
-
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
@@ -80,6 +82,29 @@ export class ProdutoService {
     return this.httpClient.post<Produto>(
       'http://localhost:4200/api/teatime/produtos/baixar-stock',
       produtoItem,
+      this.httpOptions
+    );
+  }
+
+  findAllTransferenciaEstoque(): Observable<TransferenciaEstoqueList[]> {
+    return this.httpClient.get<TransferenciaEstoqueList[]>(
+      'http://localhost:4200/api/teatime/produtos/lista-trasferecia-stock',
+      this.httpOptions
+    );
+  }
+
+  transferirEstoque(transferirEstoqueDTO: TransferirEstoqueDTO): any {
+    return this.httpClient.post<any>(
+      'http://localhost:4200/api/teatime/produtos/transferir-stock',
+      transferirEstoqueDTO,
+      this.httpOptions
+    );
+  }
+
+  receberEstoque(receberEstoqueDTO: ReceberEstoqueDTO): any {
+    return this.httpClient.post<any>(
+      'http://localhost:4200/api/teatime/produtos/receber-stock',
+      receberEstoqueDTO,
       this.httpOptions
     );
   }

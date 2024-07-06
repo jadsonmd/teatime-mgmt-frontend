@@ -23,6 +23,11 @@ const routes: Routes = [
       (await import('./produto/baixar-estoque/baixar-estoque.module')).BaixarEstoqueModule
   },
   {
+    path: 'estoque/estoque-unidade',
+    loadChildren: async () =>
+      (await import('./estoque/estoque.module')).EstoqueModule
+  },
+  {
     path: '**',
     redirectTo: 'inicio',
     pathMatch: 'full'
