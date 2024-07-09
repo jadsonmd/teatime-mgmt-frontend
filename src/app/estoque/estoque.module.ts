@@ -9,14 +9,16 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { TransferirEstoqueDialogComponent } from './transferir-estoque-dialog/transferir-estoque-dialog.component';
+import { ReceberEstoqueDialogComponent } from './receber-estoque-dialog/receber-estoque-dialog.component';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
-  declarations: [EstoqueComponent, TransferirEstoqueDialogComponent ],
+  declarations: [EstoqueComponent, TransferirEstoqueDialogComponent, ReceberEstoqueDialogComponent ],
   imports: [
     FormsModule,
     CommonModule,
@@ -29,7 +31,8 @@ import { TransferirEstoqueDialogComponent } from './transferir-estoque-dialog/tr
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatListModule
   ]
 })
 export class EstoqueModule { }

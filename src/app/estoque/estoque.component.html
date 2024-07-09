@@ -1,6 +1,12 @@
 
 <h1>Estoque por unidade</h1>
 
+<div class="menu-botoes">
+  <button mat-flat-button color="primary" (click)="receber()">
+    Produtos a receber
+  </button>
+</div>
+
 <div class="center-table">
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -56,10 +62,6 @@
               <button mat-menu-item (click)="transferir(element)">
                 <mat-icon>upload</mat-icon>
                 <span>Transferir</span>
-              </button>
-              <button mat-menu-item (click)="receber(element)">
-                <mat-icon>download</mat-icon>
-                <span>Teceber</span>
               </button>
             </mat-menu>
           </td>

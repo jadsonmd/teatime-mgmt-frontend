@@ -69,7 +69,6 @@ export class NovoProdutoDialogComponent {
   }
 
   fecharModal(action: string): void {
-    console.log('tste');
     this.dialogRef.close(action);
   }
 }

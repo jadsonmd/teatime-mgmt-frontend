@@ -6,6 +6,7 @@ import { ReceberEstoqueDTO } from './receber-estoque-dto';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TransferirEstoqueDialogComponent } from './transferir-estoque-dialog/transferir-estoque-dialog.component';
+import { ReceberEstoqueDialogComponent } from './receber-estoque-dialog/receber-estoque-dialog.component';
 
 @Component({
   selector: 'app-estoque',
@@ -37,7 +38,7 @@ export class EstoqueComponent implements OnInit {
     });
   }
 
-  openDialog(transferirEstoqueDTO: TransferirEstoqueDTO): void {
+  openDialogTransferir(transferirEstoqueDTO: TransferirEstoqueDTO): void {
     const dialogRef = this.dialog.open(TransferirEstoqueDialogComponent, {
       width: '700px',
       data: transferirEstoqueDTO,
@@ -55,6 +56,23 @@ export class EstoqueComponent implements OnInit {
     });
   }
 
+  openDialogReceber(): void {
+    const dialogRef = this.dialog.open(ReceberEstoqueDialogComponent, {
+      width: '700px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if ('salvar' === result) {
+        this.produtoService
+          .findAllTransferenciaEstoque()
+          .subscribe((estoques) => {
+            this.dataSource = estoques;
+          });
+        // this.openSnackBar('Recebimento realizado!', 'OK', 'success');
+      }
+    });
+  }
+
   transferir(estoque: TransferenciaEstoqueList): void {
     const transferirEstoqueDTO: TransferirEstoqueDTO = {
       idProdutoItem: estoque.idProdutoItem,
@@ -65,22 +83,11 @@ export class EstoqueComponent implements OnInit {
       observacao: '',
       idUsuarioTransferiu: '',
     };
-    this.openDialog(transferirEstoqueDTO);
+    this.openDialogTransferir(transferirEstoqueDTO);
   }
 
-  receber(estoque: TransferenciaEstoqueList): void {
-    const receberEstoqueDTO: ReceberEstoqueDTO = {
-      idTransferenciaEstoque: 'e9de63f6-a6b4-4096-aa57-7476a977a1c6',
-      idTransferenciaEstoqueDetalhe: 'e7ca78aa-598d-41ed-9463-2ba9f2fa20f5',
-      idUsuarioRecebeu: 'auth0|66579aa58313fe1b68ee0008',
-    };
-    this.produtoService.receberEstoque(receberEstoqueDTO).subscribe(() => {
-      this.produtoService
-        .findAllTransferenciaEstoque()
-        .subscribe((estoques) => {
-          this.dataSource = estoques;
-        });
-    });
+  receber(): void {
+    this.openDialogReceber();
   }
 
   openSnackBar(msg: string, btn: string, tipo: string): void {

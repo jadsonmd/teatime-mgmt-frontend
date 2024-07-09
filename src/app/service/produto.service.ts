@@ -10,6 +10,7 @@ import { ProdutoItemEntity } from '../produto/produto-item-entity';
 import { TransferenciaEstoqueList } from '../estoque/transferencia-estoque-list';
 import { TransferirEstoqueDTO } from '../estoque/transferir-estoque-dto';
 import { ReceberEstoqueDTO } from '../estoque/receber-estoque-dto';
+import { TransferenciaEstoqueDetalhe } from '../estoque/transferencia-estoque-detalhe';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,6 @@ export class ProdutoService {
 
   constructor(
     private readonly httpClient: HttpClient,
-    private authService: AuthService
   ) {}
 
 
@@ -105,6 +105,13 @@ export class ProdutoService {
     return this.httpClient.post<any>(
       'http://localhost:4200/api/teatime/produtos/receber-stock',
       receberEstoqueDTO,
+      this.httpOptions
+    );
+  }
+
+  findAllTransferenciaEstoquePendenteRecebimento(): Observable<TransferenciaEstoqueDetalhe[]> {
+    return this.httpClient.get<TransferenciaEstoqueDetalhe[]>(
+      'http://localhost:4200/api/teatime/produtos/lista-trasferecia-stock-pendente-recebimento',
       this.httpOptions
     );
   }

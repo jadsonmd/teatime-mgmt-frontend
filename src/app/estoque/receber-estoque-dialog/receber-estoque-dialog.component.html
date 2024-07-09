@@ -1,0 +1,38 @@
+<mat-dialog-content>
+  <h2 mat-dialog-title>Receber estoque</h2>
+
+  <form class="recebimento-form" (onSubmit)="onSubmit()">
+    <div class="form-fields">
+      <mat-selection-list
+        #itens
+        [multiple]="false"
+        (selectionChange)="getItemSelecionado(itens.selectedOptions.selected)"
+      >
+        <mat-list-option *ngFor="let item of transferenciaEstoqueDetalhes" [value]="item">
+          <div>
+            <span>{{ item.unidadeOrigem.nome }}</span> 
+            <span>{{ item.dataTransferencia | date: 'dd/MM/yyyy' }}</span> 
+            <span>{{ item.unidadeDestino.nome }}</span>
+            <span>{{ item.quantidade }}</span>
+          </div>
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="full-size">
+        <mat-label>Observacao</mat-label>
+        <input
+          color="primary"
+          matInput
+          [(ngModel)]="observacao"
+          name="observacao"
+        />
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button cdkFocusInitial (click)="onSubmit()">Salvar</button>
+</mat-dialog-actions>

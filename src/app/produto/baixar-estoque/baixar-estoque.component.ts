@@ -69,7 +69,6 @@ export class BaixarEstoqueComponent {
 
   getItemSelecionado(item: MatListOption[]): void {
     this.produtoItemSelecionado = item.map((o) => o.value)[0];
-    console.log(this.produtoItemSelecionado);
   }
 
   openSnackBar(msg: string, btn: string, tipo: string): void {

@@ -2,6 +2,9 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { TransferirEstoqueDTO } from '../transferir-estoque-dto';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProdutoService } from '../../service/produto.service';
+import { ParceiroService } from '../../service/parceiro.service';
+import { Observable } from 'rxjs';
+import { Unidade } from '../transferencia-estoque-list';
 
 @Component({
   selector: 'app-transferir-estoque-dialog',
@@ -11,6 +14,7 @@ import { ProdutoService } from '../../service/produto.service';
 export class TransferirEstoqueDialogComponent implements OnInit {
 
   user: any = {};
+  unidades!: Observable<Unidade[]>;
 
   transferirEstoque: TransferirEstoqueDTO = {
     idProdutoItem: "",
@@ -25,6 +29,7 @@ export class TransferirEstoqueDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<TransferirEstoqueDialogComponent>,
     private produtoService: ProdutoService,
+    private parceiroService: ParceiroService,
     @Inject(MAT_DIALOG_DATA) public data: TransferirEstoqueDTO,
   ) {
     this.transferirEstoque = data;
@@ -35,6 +40,7 @@ export class TransferirEstoqueDialogComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.unidades = this.parceiroService.findAllUnidades(this.user.idParceiro);
   }
 
   onSubmit(): void {
@@ -54,7 +60,6 @@ export class TransferirEstoqueDialogComponent implements OnInit {
   }
 
   fecharModal(action: string): void {
-    console.log('tste');
     this.dialogRef.close(action);
   }
 

@@ -9,7 +9,10 @@
           [(ngModel)]="transferirEstoque.idUnidadeDestino"
           name="transferirEstoque.idUnidadeDestino"
         >
-          <mat-option value="2">Filial</mat-option>
+          <mat-option *ngFor="let unidade of unidades | async"
+              [value]="unidade.id">
+              {{ unidade.nome }}
+            </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="full-two-column">
