@@ -13,10 +13,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { EspecieProdutoModalComponent } from './especie-produto-modal/especie-produto-modal.component';
 
 
 @NgModule({
-  declarations: [EspecieProdutoComponent],
+  declarations: [EspecieProdutoComponent, EspecieProdutoModalComponent],
   imports: [
     CommonModule,
     EspecieProdutoRoutingModule,

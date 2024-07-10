@@ -1,0 +1,23 @@
+<mat-dialog-content>
+    <h2 mat-dialog-title>{{ title }}</h2>
+  
+    <form class="especie-produto-form" (onSubmit)="onSubmit()">
+
+      <div class="form-fields">
+        <mat-form-field appearance="outline" class="full-two-column">
+          <mat-label>Prefixo</mat-label>
+          <input color="primary" matInput [(ngModel)]="especieProduto.prefixo" name="especieProduto.prefixo" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-two-column">
+          <mat-label>Nome</mat-label>
+          <input color="primary" matInput [(ngModel)]="especieProduto.name" name="produto.name"/>
+        </mat-form-field>
+      </div>
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-button cdkFocusInitial (click)="onSubmit()">Salvar</button>
+  </mat-dialog-actions>
+  

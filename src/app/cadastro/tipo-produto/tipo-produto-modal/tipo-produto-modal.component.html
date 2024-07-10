@@ -1,0 +1,19 @@
+<mat-dialog-content>
+    <h2 mat-dialog-title>{{ title }}</h2>
+  
+    <form class="tipo-produto-form" (onSubmit)="onSubmit()">
+
+      <div class="form-fields">
+        <mat-form-field appearance="outline" class="full-size">
+          <mat-label>Nome</mat-label>
+          <input color="primary" matInput [(ngModel)]="tipoProduto.name" name="produto.name"/>
+        </mat-form-field>
+      </div>
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="cancelar()">Cancelar</button>
+    <button mat-button cdkFocusInitial (click)="onSubmit()">Salvar</button>
+  </mat-dialog-actions>
+  

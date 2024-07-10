@@ -44,7 +44,6 @@ export class ProdutoComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if ('salvar' === result) {
-        console.log('Produto salvo com sucesso.');
         this.produtoService
         .findAll()
         .subscribe((produto) => (this.dataSource = produto));

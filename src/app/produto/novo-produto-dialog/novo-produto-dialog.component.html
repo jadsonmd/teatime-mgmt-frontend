@@ -39,13 +39,19 @@
       <mat-form-field appearance="outline" class="full-two-column">
         <mat-label>Tipo produto</mat-label>
         <mat-select [(value)]="produto.idTipoProduto" name="produto.idTipoProduto">
-          <mat-option value="1">Caixa</mat-option>
+          <mat-option *ngFor="let tipo of tipoProdutos | async"
+              [value]="tipo.id">
+              {{ tipo.name }}
+            </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="outline" class="full-two-column">
         <mat-label>Espécie produto</mat-label>
         <mat-select [(ngModel)]="produto.idEspecieProduto" name="produto.idEspecieProduto">
-          <mat-option value="2">Reagente</mat-option>
+          <mat-option *ngFor="let especie of especieProdutos | async"
+              [value]="especie.id">
+              {{ especie.name }}
+            </mat-option>
         </mat-select>
       </mat-form-field>
     </div>

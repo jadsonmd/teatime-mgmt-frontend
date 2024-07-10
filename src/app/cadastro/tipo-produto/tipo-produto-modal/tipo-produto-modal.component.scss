@@ -1,0 +1,38 @@
+mat-dialog-content {
+    background-color: darkorchid;
+  }
+  
+  h2 {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-fields {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      .full-size {
+          width: 100%;
+          display: flex;
+      }
+      .full-two-column {
+          width: 49%;
+          display: flex;
+          justify-content: space-between;
+      }
+  }
+  
+  .form-fields-full-size {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+  }
+  
+  mat-dialog-actions {
+    justify-content: right;
+    background-color: darkorchid;
+  }
+  

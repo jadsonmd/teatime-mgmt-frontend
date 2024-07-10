@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TipoProduto } from '../tipo-produto';
 import { CadastroService } from '../../service/cadastro.service';
+import { TipoProdutoModalComponent } from './tipo-produto-modal/tipo-produto-modal.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-tipo-produto',
@@ -17,23 +20,57 @@ export class TipoProdutoComponent implements OnInit {
 
   dataSource: TipoProduto[] = [];
 
-  constructor(private cadastroService: CadastroService) {}
+  constructor(private cadastroService: CadastroService,
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
+    this.atualizarListaTipoProduto();
+  }
+
+  atualizarListaTipoProduto(): void {
     this.cadastroService.findAllTipoProduto().subscribe((tipoProduto) => {
       this.dataSource = tipoProduto;
     });
   }
 
   apagar(element: any): void {
-    console.log('Apagando', element);
+    this.cadastroService.deleteTipoProduto(element).subscribe(() => {
+      this.atualizarListaTipoProduto();
+      this.openSnackBar('Tipo de produto apagado com sucesso.', 'OK', 'success');
+    });
   }
 
   editar(element: any): void {
-    console.log('Editando', element);
+    this.openDialog(element);
   }
 
   incluir(): void {
-    console.log('Incluindo');
+    const prod = {};
+    this.openDialog(prod);
+  }
+
+  openDialog(tipoProduto: TipoProduto | {}): void {
+    const dialogRef = this.dialog.open(TipoProdutoModalComponent, {
+      width: '700px',
+      data: tipoProduto,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if ('salvar' === result) {
+        this.atualizarListaTipoProduto();
+        this.openSnackBar('Tipo produto salvo com sucesso.', 'OK', 'success');
+      }
+    });
+  }
+
+  openSnackBar(msg: string, btn: string, tipo: string): void {
+    this.snackBar.open(msg, btn, {
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      duration: 5000,
+      panelClass: tipo,
+    });
   }
 }

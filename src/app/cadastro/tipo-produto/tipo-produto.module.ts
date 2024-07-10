@@ -12,10 +12,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
+import { TipoProdutoModalComponent } from './tipo-produto-modal/tipo-produto-modal.component';
 
 
 @NgModule({
-  declarations: [TipoProdutoComponent],
+  declarations: [TipoProdutoComponent, TipoProdutoModalComponent],
   imports: [
     CommonModule,
     TipoProdutoRoutingModule,

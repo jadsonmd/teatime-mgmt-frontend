@@ -1,15 +1,19 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NovoProduto } from './novo-produto';
 import { ProdutoService } from '../../service/produto.service';
 import { ProdutoItem } from '../produto-item';
+import { CadastroService } from '../../service/cadastro.service';
+import { EspecieProduto } from '../../cadastro/especie-produto';
+import { Observable } from 'rxjs';
+import { TipoProduto } from '../../cadastro/tipo-produto';
 
 @Component({
   selector: 'app-novo-produto-dialog',
   templateUrl: './novo-produto-dialog.component.html',
   styleUrl: './novo-produto-dialog.component.scss',
 })
-export class NovoProdutoDialogComponent {
+export class NovoProdutoDialogComponent implements OnInit {
   title: string = '';
   idParceiro: string = '';
   idProduto: string = '';
@@ -27,10 +31,14 @@ export class NovoProdutoDialogComponent {
     idEspecieProduto: 0,
   };
 
+  especieProdutos!: Observable<EspecieProduto[]>;
+  tipoProdutos!: Observable<TipoProduto[]>;
+
   constructor(
     public dialogRef: MatDialogRef<NovoProdutoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private produtoService: ProdutoService
+    private produtoService: ProdutoService,
+    private cadastroService: CadastroService
   ) {
     this.produto = data;
     this.idProduto = data.idProduto;
@@ -39,6 +47,11 @@ export class NovoProdutoDialogComponent {
     if (user) {
       this.idParceiro = JSON.parse(user).idParceiro;
     }
+  }
+
+  ngOnInit(): void {
+    this.especieProdutos = this.cadastroService.findAllEspecieProduto();
+    this.tipoProdutos = this.cadastroService.findAllTipoProduto();
   }
 
   onSubmit(): void {
