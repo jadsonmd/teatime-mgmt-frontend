@@ -28,6 +28,16 @@ const routes: Routes = [
       (await import('./estoque/estoque.module')).EstoqueModule
   },
   {
+    path: 'cadastro/tipo-produto',
+    loadChildren: async () =>
+      (await import('./cadastro/tipo-produto/tipo-produto.module')).TipoProdutoModule
+  },
+  {
+    path: 'cadastro/especie-produto',
+    loadChildren: async () =>
+      (await import('./cadastro/especie-produto/especie-produto.module')).EspecieProdutoModule
+  },
+  {
     path: '**',
     redirectTo: 'inicio',
     pathMatch: 'full'

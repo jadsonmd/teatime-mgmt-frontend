@@ -34,16 +34,30 @@ export class TreeMenuComponent {
       link: '/',
       children: [
         {
-          name: 'Incluir Receita',
+          name: 'Incluir receita',
           link: '/',
         },
         {
-          name: 'Incluir Despesa',
+          name: 'Incluir despesa',
           link: '/',
         },
         {
           name: 'Relatorio',
           link: '/',
+        },
+      ],
+    },
+    {
+      name: 'Cadastro',
+      link: '/',
+      children: [
+        {
+          name: 'Tipo produto',
+          link: '/cadastro/tipo-produto',
+        },
+        {
+          name: 'Espécie produto',
+          link: '/cadastro/especie-produto',
         },
       ],
     },
