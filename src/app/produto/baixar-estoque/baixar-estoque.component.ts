@@ -20,6 +20,8 @@ export class BaixarEstoqueComponent {
     precoCompra: 0,
     dataValidade: '',
     inUso: false,
+    idUnidadeDestino: 0,
+    idUsuarioRecebeu: '',
   };
 
   produtoItens!: ProdutoItemEntity[];
@@ -52,6 +54,8 @@ export class BaixarEstoqueComponent {
         precoCompra: this.produtoItemSelecionado.precoCompra,
         dataValidade: this.produtoItemSelecionado.dataValidade,
         inUso: false,
+        idUnidadeDestino: 0,
+        idUsuarioRecebeu: '',
       };
       this.produtoService.baixarEstoque(this.produtoItem).subscribe((data) => {
         if (data) {

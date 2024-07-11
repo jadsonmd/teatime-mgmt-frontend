@@ -18,6 +18,8 @@ export class IncluirEstoqueComponent {
     precoCompra: 0,
     dataValidade: '',
     inUso: false,
+    idUnidadeDestino: 0,
+    idUsuarioRecebeu: '',
   };
 
   prod!: Produto;
@@ -50,6 +52,8 @@ export class IncluirEstoqueComponent {
       precoCompra: 0,
       dataValidade: '',
       inUso: false,
+      idUnidadeDestino: 0,
+      idUsuarioRecebeu: '',
     };
   }
 

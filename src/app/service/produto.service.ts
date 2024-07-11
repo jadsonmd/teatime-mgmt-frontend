@@ -16,13 +16,20 @@ import { TransferenciaEstoqueDetalhe } from '../estoque/transferencia-estoque-de
   providedIn: 'root',
 })
 export class ProdutoService {
+
+  user: any;
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
   constructor(
     private readonly httpClient: HttpClient,
-  ) {}
+  ) {
+    const user = sessionStorage.getItem('usuario');
+    if (user) {
+      this.user = JSON.parse(user);
+    }
+  }
 
 
   findAll(): Observable<ProdutoItem[]> {
@@ -71,6 +78,8 @@ export class ProdutoService {
   }
 
   incluirEstoque(produtoItem: GerenciarEstoqueDTO) {
+    produtoItem.idUnidadeDestino = this.user.idUnidade;
+    produtoItem.idUsuarioRecebeu = this.user.id;
     return this.httpClient.post<Produto>(
       'http://localhost:4200/api/teatime/produtos/incluir-stock',
       produtoItem,
@@ -79,6 +88,8 @@ export class ProdutoService {
   }
 
   baixarEstoque(produtoItem: GerenciarEstoqueDTO) {
+    produtoItem.idUnidadeDestino = this.user.idUnidade;
+    produtoItem.idUsuarioRecebeu = this.user.id;
     return this.httpClient.post<Produto>(
       'http://localhost:4200/api/teatime/produtos/baixar-stock',
       produtoItem,

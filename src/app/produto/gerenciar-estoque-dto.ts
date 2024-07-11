@@ -8,4 +8,7 @@ export interface GerenciarEstoqueDTO {
     dataValidade: string;
     inUso: boolean;
 
+    idUsuarioRecebeu: string;
+    idUnidadeDestino: number;
+
 }
