@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ParceiroService {
 
+  user: any;
   
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -15,11 +16,16 @@ export class ParceiroService {
 
   constructor(
     private readonly httpClient: HttpClient,
-  ) {}
+  ) {
+    const user = sessionStorage.getItem('usuario');
+    if (user) {
+      this.user = JSON.parse(user);
+    }
+  }
 
-  findAllUnidades(idParceiro: string): Observable<Unidade[]> {
+  findAllUnidades(): Observable<Unidade[]> {
     return this.httpClient.get<Unidade[]>(
-      `http://localhost:4200/api/teatime/parceiros/unidades/${idParceiro}`,
+      `http://localhost:4200/api/teatime/parceiros/unidades/${this.user.idParceiro}`,
       this.httpOptions
     );
   }

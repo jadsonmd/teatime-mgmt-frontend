@@ -15,7 +15,6 @@ import { TipoProduto } from '../../cadastro/tipo-produto';
 })
 export class NovoProdutoDialogComponent implements OnInit {
   title: string = '';
-  idParceiro: string = '';
   idProduto: string = '';
 
   produto: NovoProduto = {
@@ -43,10 +42,6 @@ export class NovoProdutoDialogComponent implements OnInit {
     this.produto = data;
     this.idProduto = data.idProduto;
     this.title = this.idProduto ? 'Editar Produto' : 'Criar Produto';
-    const user = sessionStorage.getItem('usuario');
-    if (user) {
-      this.idParceiro = JSON.parse(user).idParceiro;
-    }
   }
 
   ngOnInit(): void {
@@ -57,7 +52,6 @@ export class NovoProdutoDialogComponent implements OnInit {
   onSubmit(): void {
     if (this.idProduto) {
       this.produto.id = this.idProduto;
-      this.produto.idParceiro = this.idParceiro;
       this.produtoService
         .updateProduto(this.produto)
         .subscribe((prod: ProdutoItem) => {
@@ -66,7 +60,6 @@ export class NovoProdutoDialogComponent implements OnInit {
           }
         });
     } else {
-      this.produto.idParceiro = this.idParceiro;
       this.produtoService
         .saveProduto(this.produto)
         .subscribe((prod: ProdutoItem) => {

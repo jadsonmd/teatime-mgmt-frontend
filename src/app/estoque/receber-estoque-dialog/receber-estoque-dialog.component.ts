@@ -12,7 +12,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './receber-estoque-dialog.component.scss',
 })
 export class ReceberEstoqueDialogComponent implements OnInit {
-  user!: any;
   observacao: string = '';
   transferenciaEstoqueDetalhes: TransferenciaEstoqueDetalhe[] = [];
   transferenciaEstoqueDetalhe!: TransferenciaEstoqueDetalhe;
@@ -21,12 +20,7 @@ export class ReceberEstoqueDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ReceberEstoqueDialogComponent>,
     private produtoService: ProdutoService,
     private snackBar: MatSnackBar
-  ) {
-    const user = sessionStorage.getItem('usuario');
-    if (user) {
-      this.user = JSON.parse(user);
-    }
-  }
+  ) {}
 
   ngOnInit(): void {
     this.findItensReceber();
@@ -50,7 +44,7 @@ export class ReceberEstoqueDialogComponent implements OnInit {
         idTransferenciaEstoque:
           this.transferenciaEstoqueDetalhe.idTransferenciaEstoque,
         idTransferenciaEstoqueDetalhe: this.transferenciaEstoqueDetalhe.id,
-        idUsuarioRecebeu: this.user.id,
+        idUsuarioRecebeu: '',
         observacao: this.observacao
       };
       this.produtoService.receberEstoque(receberEstoqueDTO).subscribe(() => {

@@ -12,8 +12,6 @@ import { Unidade } from '../transferencia-estoque-list';
   styleUrl: './transferir-estoque-dialog.component.scss'
 })
 export class TransferirEstoqueDialogComponent implements OnInit {
-
-  user: any = {};
   unidades!: Observable<Unidade[]>;
 
   transferirEstoque: TransferirEstoqueDTO = {
@@ -33,19 +31,13 @@ export class TransferirEstoqueDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: TransferirEstoqueDTO,
   ) {
     this.transferirEstoque = data;
-    const user = sessionStorage.getItem('usuario');
-    if (user) {
-      this.user = JSON.parse(user);
-    }
    }
 
   ngOnInit(): void {
-    this.unidades = this.parceiroService.findAllUnidades(this.user.idParceiro);
+    this.unidades = this.parceiroService.findAllUnidades();
   }
 
   onSubmit(): void {
-    this.transferirEstoque.idUsuarioTransferiu = this.user.id;
-    this.transferirEstoque.idParceiro = this.user.idParceiro; 
     this.produtoService
     .transferirEstoque(this.transferirEstoque)
     .subscribe((transf: any) => {

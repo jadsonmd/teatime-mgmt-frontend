@@ -34,13 +34,13 @@ export class ProdutoService {
 
   findAll(): Observable<ProdutoItem[]> {
     return this.httpClient.get<ProdutoItem[]>(
-      'http://localhost:4200/api/teatime/produtos/lista-produto-com-itens',
+      `http://localhost:4200/api/teatime/produtos/lista-produto-com-itens/idParceiro/${this.user.idParceiro}`,
       this.httpOptions
     );
   }
 
   saveProduto(produto: any): Observable<any> {
-
+    produto.idParceiro = this.user.idParceiro;
     return this.httpClient.post<NovoProduto>(
       'http://localhost:4200/api/teatime/produtos',
       produto,
@@ -49,7 +49,7 @@ export class ProdutoService {
   }
 
   updateProduto(produto: any): Observable<any> {
-
+    produto.idParceiro = this.user.idParceiro;
     return this.httpClient.put<NovoProduto>(
       'http://localhost:4200/api/teatime/produtos',
       produto,
@@ -65,7 +65,7 @@ export class ProdutoService {
 
   getAllProdutos(): Observable<Produto[]> {
     return this.httpClient.get<Produto[]>(
-      'http://localhost:4200/api/teatime/produtos',
+      `http://localhost:4200/api/teatime/produtos/idParceiro/${this.user.idParceiro}`,
       this.httpOptions
     );
   }
@@ -99,12 +99,14 @@ export class ProdutoService {
 
   findAllTransferenciaEstoque(): Observable<TransferenciaEstoqueList[]> {
     return this.httpClient.get<TransferenciaEstoqueList[]>(
-      'http://localhost:4200/api/teatime/produtos/lista-trasferecia-stock',
+      `http://localhost:4200/api/teatime/produtos/lista-trasferecia-stock/idParceiro/${this.user.idParceiro}`,
       this.httpOptions
     );
   }
 
   transferirEstoque(transferirEstoqueDTO: TransferirEstoqueDTO): any {
+    transferirEstoqueDTO.idUsuarioTransferiu = this.user.id;
+    transferirEstoqueDTO.idParceiro = this.user.idParceiro; 
     return this.httpClient.post<any>(
       'http://localhost:4200/api/teatime/produtos/transferir-stock',
       transferirEstoqueDTO,
@@ -113,6 +115,7 @@ export class ProdutoService {
   }
 
   receberEstoque(receberEstoqueDTO: ReceberEstoqueDTO): any {
+    receberEstoqueDTO.idUsuarioRecebeu = this.user.id;
     return this.httpClient.post<any>(
       'http://localhost:4200/api/teatime/produtos/receber-stock',
       receberEstoqueDTO,
@@ -122,7 +125,7 @@ export class ProdutoService {
 
   findAllTransferenciaEstoquePendenteRecebimento(): Observable<TransferenciaEstoqueDetalhe[]> {
     return this.httpClient.get<TransferenciaEstoqueDetalhe[]>(
-      'http://localhost:4200/api/teatime/produtos/lista-trasferecia-stock-pendente-recebimento',
+      `http://localhost:4200/api/teatime/produtos/lista-trasferecia-stock-pendente-recebimento/idParceiro/${this.user.idParceiro}`,
       this.httpOptions
     );
   }

@@ -9,7 +9,7 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit, AfterContentInit {
+export class AppComponent implements OnInit {
   title = 'teatime-mgmt-frontend';
 
   constructor(public auth: AuthService, public usuarioService: UsuarioService,
@@ -18,9 +18,7 @@ export class AppComponent implements OnInit, AfterContentInit {
 
 
   ngOnInit(): void {
-    console.log('AppComponent.ngOnInit');
     this.auth.isAuthenticated$.subscribe((isAuthenticated) => {
-      console.log('AppComponent.auth.isAuthenticated$', isAuthenticated);
       if (isAuthenticated) {
         this.auth.user$.subscribe((user) => {
           if (user && user.sub) {
@@ -36,33 +34,11 @@ export class AppComponent implements OnInit, AfterContentInit {
     });
   }
 
-  ngAfterContentInit(): void {
-    console.log('AppComponent.ngOnChanges');
-  }
-
   login() {
-    console.log('login()');
-    
     this.auth.loginWithRedirect();
-    console.log('login() - after');
-    
-    // Jadson Mezzari Dagostin
-    // jadsonmd@gmail.com
-    // Jadson@123
   }
 
-  teste() {
-    this.auth.appState$.subscribe((state) => {
-      console.log('AppComponent.auth.appState$', state);
-    });
-    this.auth.isAuthenticated$.subscribe((isAuthenticated) => {
-      console.log('AppComponent.auth.isAuthenticated$', isAuthenticated);
-    });
-  }
-
-  logout() {
-    console.log('logout()');
-    
+  logout() {    
     this.auth.logout({ 
       logoutParams: {
         returnTo: this.document.location.origin

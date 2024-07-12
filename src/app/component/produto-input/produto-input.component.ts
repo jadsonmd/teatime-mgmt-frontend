@@ -18,8 +18,6 @@ export class ProdutoInputComponent {
 
   constructor(private produtoService: ProdutoService) {
     this.produtoService.getAllProdutos().subscribe((prod) => {
-      console.log('produtos', prod);
-
       this.produtos = prod;
     });
 
