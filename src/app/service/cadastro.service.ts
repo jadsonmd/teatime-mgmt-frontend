@@ -4,6 +4,7 @@ import { Unidade } from '../estoque/transferencia-estoque-list';
 import { Observable } from 'rxjs';
 import { EspecieProduto } from '../cadastro/especie-produto';
 import { TipoProduto } from '../cadastro/tipo-produto';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class CadastroService {
 
   findAllEspecieProduto(): Observable<EspecieProduto[]> {
     return this.httpClient.get<EspecieProduto[]>(
-      `http://localhost:4200/api/teatime/especie-produto/idParceiro/${this.user.idParceiro}`,
+      `${environment.apiUrl}/api/teatime/especie-produto/idParceiro/${this.user.idParceiro}`,
       this.httpOptions
     );
   }
@@ -32,7 +33,7 @@ export class CadastroService {
   saveEspecieProduto(especieProduto: EspecieProduto) {
     especieProduto.idParceiro = this.user.idParceiro;
     return this.httpClient.post<EspecieProduto>(
-      `http://localhost:4200/api/teatime/especie-produto`,
+      `${environment.apiUrl}/api/teatime/especie-produto`,
       especieProduto,
       this.httpOptions
     );
@@ -40,7 +41,7 @@ export class CadastroService {
 
   updateEspecieProduto(especieProduto: EspecieProduto) {
     return this.httpClient.put<EspecieProduto>(
-      `http://localhost:4200/api/teatime/especie-produto`,
+      `${environment.apiUrl}/api/teatime/especie-produto`,
       especieProduto,
       this.httpOptions
     );
@@ -48,14 +49,14 @@ export class CadastroService {
 
   deleteEspecieProduto(especieProduto: EspecieProduto) {
     return this.httpClient.delete<void>(
-      `http://localhost:4200/api/teatime/especie-produto/${especieProduto.id}`,
+      `${environment.apiUrl}/api/teatime/especie-produto/${especieProduto.id}`,
       this.httpOptions
     );
   }
 
   findAllTipoProduto(): Observable<TipoProduto[]> {
     return this.httpClient.get<TipoProduto[]>(
-      `http://localhost:4200/api/teatime/tipo-produto/idParceiro/${this.user.idParceiro}`,
+      `${environment.apiUrl}/api/teatime/tipo-produto/idParceiro/${this.user.idParceiro}`,
       this.httpOptions
     );
   }
@@ -63,7 +64,7 @@ export class CadastroService {
   saveTipoProduto(tipoProduto: TipoProduto) {
     tipoProduto.idParceiro = this.user.idParceiro;
     return this.httpClient.post<TipoProduto>(
-      `http://localhost:4200/api/teatime/tipo-produto`,
+      `${environment.apiUrl}/api/teatime/tipo-produto`,
       tipoProduto,
       this.httpOptions
     );
@@ -71,7 +72,7 @@ export class CadastroService {
 
   updateTipoProduto(tipoProduto: TipoProduto) {
     return this.httpClient.put<TipoProduto>(
-      `http://localhost:4200/api/teatime/tipo-produto`,
+      `${environment.apiUrl}/api/teatime/tipo-produto`,
       tipoProduto,
       this.httpOptions
     );
@@ -79,7 +80,7 @@ export class CadastroService {
 
   deleteTipoProduto(tipoProduto: TipoProduto) {
     return this.httpClient.delete<void>(
-      `http://localhost:4200/api/teatime/tipo-produto/${tipoProduto.id}`,
+      `${environment.apiUrl}/api/teatime/tipo-produto/${tipoProduto.id}`,
       this.httpOptions
     );
   }

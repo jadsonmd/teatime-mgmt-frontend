@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Unidade } from '../estoque/transferencia-estoque-list';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class ParceiroService {
 
   findAllUnidades(): Observable<Unidade[]> {
     return this.httpClient.get<Unidade[]>(
-      `http://localhost:4200/api/teatime/parceiros/unidades/${this.user.idParceiro}`,
+      `${environment.apiUrl}/api/teatime/parceiros/unidades/${this.user.idParceiro}`,
       this.httpOptions
     );
   }
