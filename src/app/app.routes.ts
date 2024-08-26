@@ -15,6 +15,7 @@ export const routes: Routes = [
     { path: 'produto/baixar-estoque', component: BaixarEstoqueComponent},
     { path: 'estoque/estoque-unidade', component: EstoqueComponent },
     { path: 'cadastro/especie-produto', component: EspecieProdutoComponent },
+    { path: 'login/callback', component: LoginComponent },
     { path: '**', redirectTo: ''}
 
 ];

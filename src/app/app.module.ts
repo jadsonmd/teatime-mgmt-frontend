@@ -5,8 +5,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthModule, authHttpInterceptorFn, provideAuth0,  } from '@auth0/auth0-angular';
+import { authHttpInterceptorFn, provideAuth0 } from '@auth0/auth0-angular';
 import { environment as env } from '../environments/enviroment';
+import { environment } from '../environments/environment';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -42,7 +43,7 @@ import { MatTreeModule } from '@angular/material/tree';
         redirect_uri: window.location.origin,
         // Request this audience at user authentication time
         audience: env.auth.authorizationParams.audience,
-        // Request this scope at user authentication time
+        // Request this scope at user authentication time 
         scope: 'read:current_user',
       },
     
@@ -51,7 +52,8 @@ import { MatTreeModule } from '@angular/material/tree';
         allowedList: [
           {
             // Match any request that starts 'https://localhost:8080/api/v2/' (note the asterisk)
-            uri: `${window.location.origin}/*`,
+            // uri: `${window.location.origin}/*`,
+            uri: `${environment.apiUrl}/*`,
             tokenOptions: {
               authorizationParams: env.auth.authorizationParams,
             }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
@@ -6,19 +6,11 @@ import { AuthService } from '@auth0/auth0-angular';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthService) { }
 
-  hide = true;
-  clickEvent(event: MouseEvent) {
-    this.hide = !this.hide;
-    event.stopPropagation();
+  ngOnInit(): void {
+    console.log('Jadson', window.location.origin);
   }
-
-  // login() {
-  //   this.auth.loginWithRedirect();
-  // }
-
-
 }
