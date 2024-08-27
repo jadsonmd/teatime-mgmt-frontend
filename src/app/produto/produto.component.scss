@@ -1,14 +1,10 @@
-
 .center-table {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px;
     .mat-elevation-z8 {
-        background: darkorchid;
-        // margin-left: 10px;
         button {
-            background: darkorchid;
             border: none;
             mat-icon {
                 color: white;

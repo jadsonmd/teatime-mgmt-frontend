@@ -1,6 +1,6 @@
 {
   "/api/teatime": {
-    "target": "https://xxx:8080",
+    "target": "https://192.168.0.254:8443",
     "secure": false,
     "changeOrigin": true
   }
