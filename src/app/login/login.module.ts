@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { SolarSystemModule } from '../component/solar-system/solar-system.module';
 
 
 
@@ -17,7 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule, 
     MatInputModule, 
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    SolarSystemModule
   ],
 })
 export class LoginModule { }
