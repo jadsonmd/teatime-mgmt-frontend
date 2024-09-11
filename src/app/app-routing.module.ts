@@ -23,6 +23,11 @@ const routes: Routes = [
       (await import('./produto/baixar-estoque/baixar-estoque.module')).BaixarEstoqueModule
   },
   {
+    path: 'produto/dashboard-produto',
+    loadChildren: async () =>
+      (await import('./produto/dashboard-produto/dashboard-produto.module')).DashboardProdutoModule
+  },
+  {
     path: 'estoque/estoque-unidade',
     loadChildren: async () =>
       (await import('./estoque/estoque.module')).EstoqueModule

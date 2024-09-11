@@ -6,6 +6,7 @@ import { BaixarEstoqueComponent } from './produto/baixar-estoque/baixar-estoque.
 import { AppComponent } from './app.component';
 import { EstoqueComponent } from './estoque/estoque.component';
 import { EspecieProdutoComponent } from './cadastro/especie-produto/especie-produto.component';
+import { DashboardProdutoComponent } from './produto/dashboard-produto/dashboard-produto.component';
 
 export const routes: Routes = [
     { path: '', component: AppComponent},
@@ -13,6 +14,7 @@ export const routes: Routes = [
     { path: 'produto', component: ProdutoComponent},
     { path: 'produto/incluir-estoque', component: IncluirEstoqueComponent},
     { path: 'produto/baixar-estoque', component: BaixarEstoqueComponent},
+    { path: 'produto/dashboard-produto', component: DashboardProdutoComponent},
     { path: 'estoque/estoque-unidade', component: EstoqueComponent },
     { path: 'cadastro/especie-produto', component: EspecieProdutoComponent },
     { path: 'login/callback', component: LoginComponent },
