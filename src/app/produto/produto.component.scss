@@ -1,15 +1,30 @@
+@use '@angular/material' as mat;
+
 .center-table {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
     .mat-elevation-z8 {
         button {
             border: none;
-            mat-icon {
-                color: white;
-            }
         }
+    }
+    .mat-column-star {
+        text-align: right;
+    }
+}
+
+
+.center-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    mat-form-field {
+        width: 100%;
     }
 }
 

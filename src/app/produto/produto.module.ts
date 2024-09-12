@@ -12,6 +12,8 @@ import { NovoProdutoDialogComponent } from './novo-produto-dialog/novo-produto-d
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [ProdutoComponent, NovoProdutoDialogComponent],
@@ -27,6 +29,8 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatSortModule,
+    MatPaginatorModule
   ]
 })
 export class ProdutoModule { }
