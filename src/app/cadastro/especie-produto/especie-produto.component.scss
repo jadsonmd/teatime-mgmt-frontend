@@ -6,10 +6,10 @@
     .mat-elevation-z8 {
         button {
             border: none;
-            mat-icon {
-                color: white;
-            }
         }
+    }
+    .mat-column-star {
+        text-align: right;
     }
 }
 
