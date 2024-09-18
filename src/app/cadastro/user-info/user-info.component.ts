@@ -39,8 +39,10 @@ export class UserInfoComponent implements OnInit {
     if (sessionUsuario != null && sessionUsuario != 'null') {
       this.unidades = this.parceiroService.findAllUnidades();
       const user = JSON.parse(sessionUsuario);
-      this.disabledParceiro = true;
-      this.disabledUnidade = true;
+      if (user.email !== 'jadsonmd@gmail.com') {
+        this.disabledParceiro = true;
+        this.disabledUnidade = true;
+      }
       this.userInfo = {
         id: user.id,
         idUnidade: user.idUnidade,
