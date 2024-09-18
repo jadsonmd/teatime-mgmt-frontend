@@ -44,7 +44,7 @@ import { MatTreeModule } from '@angular/material/tree';
         // Request this audience at user authentication time
         audience: env.auth.authorizationParams.audience,
         // Request this scope at user authentication time 
-        scope: 'read:current_user',
+        scope: 'profile openId email',
       },
     
       // Specify configuration for the interceptor              

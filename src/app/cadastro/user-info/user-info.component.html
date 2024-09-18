@@ -1,0 +1,49 @@
+<div class="center-div">
+  <h1>Informações do Usuário</h1>
+
+  {{ userInfo.id }} - {{ userInfo.email }}
+  <br />  <br /> 
+  <form class="user-info-form" (onSubmit)="onSubmit()">
+    <div class="form-fields">
+      <mat-form-field appearance="outline">
+        <mat-label>Parceiro</mat-label>
+        <input
+          color="primary"
+          matInput
+          [(ngModel)]="userInfo.idParceiro"
+          name="userInfo.idParceiro"
+          [disabled]="disabledParceiro"
+          (change)="buscarUnidades()"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Unidade</mat-label>
+        <mat-select [(ngModel)]="userInfo.idUnidade" name="userInfo.idUnidade" [disabled]="disabledUnidade">
+          <mat-option
+            *ngFor="let unidade of unidades | async"
+            [value]="unidade.id"
+          >
+            {{ unidade.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="nome">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input
+          color="primary"
+          matInput
+          [(ngModel)]="userInfo.name"
+          name="userInfo.name"
+        />
+      </mat-form-field>
+    </div>
+    <div class="actions">
+      <button mat-flat-button color="primary" (click)="onSubmit()">
+        Salvar
+      </button>
+    </div>
+  </form>
+</div>

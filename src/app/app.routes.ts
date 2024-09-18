@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { EstoqueComponent } from './estoque/estoque.component';
 import { EspecieProdutoComponent } from './cadastro/especie-produto/especie-produto.component';
 import { DashboardProdutoComponent } from './produto/dashboard-produto/dashboard-produto.component';
+import { UserInfoComponent } from './cadastro/user-info/user-info.component';
 
 export const routes: Routes = [
     { path: '', component: AppComponent},
@@ -17,6 +18,7 @@ export const routes: Routes = [
     { path: 'produto/dashboard-produto', component: DashboardProdutoComponent},
     { path: 'estoque/estoque-unidade', component: EstoqueComponent },
     { path: 'cadastro/especie-produto', component: EspecieProdutoComponent },
+    { path: 'cadastro/info-usuario', component: UserInfoComponent },
     { path: 'login/callback', component: LoginComponent },
     { path: '**', redirectTo: ''}
 

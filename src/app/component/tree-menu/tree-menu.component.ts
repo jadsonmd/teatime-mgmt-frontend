@@ -60,6 +60,10 @@ export class TreeMenuComponent {
           name: 'Espécie produto',
           link: '/cadastro/especie-produto',
         },
+        {
+          name: 'Informações usuário',
+          link: '/cadastro/info-usuario',
+        },
       ],
     },
   ];

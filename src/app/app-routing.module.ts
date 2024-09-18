@@ -43,6 +43,11 @@ const routes: Routes = [
       (await import('./cadastro/especie-produto/especie-produto.module')).EspecieProdutoModule
   },
   {
+    path: 'cadastro/info-usuario',
+    loadChildren: async () =>
+      (await import('./cadastro/user-info/user-info.module')).UserInfoModule
+  },
+  {
     path: '**',
     redirectTo: 'inicio',
     pathMatch: 'full'

@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
         this.auth.user$.subscribe((user) => {
           if (user && user.sub) {
             user.sub = user.sub.split('|')[1];
-            this.usuarioService.findById(user.sub).subscribe((usuario) => {
+            this.usuarioService.findById(user.sub).subscribe((usuario) => {              
               sessionStorage.setItem('usuario', JSON.stringify(usuario));
             });
           }
