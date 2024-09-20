@@ -5,18 +5,18 @@
     <div class="form-fields">
       <mat-form-field appearance="outline" class="full-two-column">
         <mat-label>Código produto</mat-label>
-        <input color="primary" matInput [(ngModel)]="produto.codigo" name="produto.codigo" />
+        <input color="primary" matInput [(ngModel)]="produto.codigo" name="produto.codigo" (ngModelChange)="produto.codigo = $event.toUpperCase()"/>
       </mat-form-field>
       <mat-form-field appearance="outline" class="full-two-column">
         <mat-label>Marca</mat-label>
-        <input color="primary" matInput [(ngModel)]="produto.marca" name="produto.marca"/>
+        <input color="primary" matInput [(ngModel)]="produto.marca" name="produto.marca" (ngModelChange)="produto.marca = $event.toUpperCase()"/>
       </mat-form-field>
     </div>
 
     <div class="form-fields">
       <mat-form-field appearance="outline" class="full-size">
         <mat-label>Nome</mat-label>
-        <input color="primary" matInput  [(ngModel)]="produto.nome" name="produto.nome" />
+        <input color="primary" matInput  [(ngModel)]="produto.nome" name="produto.nome" (ngModelChange)="produto.nome = $event.toUpperCase()"/>
       </mat-form-field>
     </div>
 
