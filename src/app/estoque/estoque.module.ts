@@ -12,6 +12,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { TransferirEstoqueDialogComponent } from './transferir-estoque-dialog/transferir-estoque-dialog.component';
 import { ReceberEstoqueDialogComponent } from './receber-estoque-dialog/receber-estoque-dialog.component';
 import { MatListModule } from '@angular/material/list';
@@ -27,10 +28,10 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-    
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTooltipModule,
     MatSelectModule,
     MatListModule
   ]

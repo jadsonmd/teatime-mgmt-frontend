@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class BaixarEstoqueComponent {
   produtoItem: GerenciarEstoqueDTO = {
+    idParceiro: '',
     idProduto: '',
     idProdutoItem: '',
     qtd: 0,
@@ -47,6 +48,7 @@ export class BaixarEstoqueComponent {
   onSubmit(): void {
     if (this.produtoItemSelecionado && this.produtoItemSelecionado.idProduto === this.prod.id) {
       this.produtoItem = {
+        idParceiro: '',
         idProduto: this.produtoItemSelecionado.idProduto,
         idProdutoItem: this.produtoItemSelecionado.id,
         qtd: this.produtoItem.qtd,

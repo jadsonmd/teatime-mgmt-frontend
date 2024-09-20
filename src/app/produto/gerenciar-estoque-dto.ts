@@ -1,5 +1,6 @@
 export interface GerenciarEstoqueDTO {
 
+    idParceiro: string;
     idProduto: string;
     idProdutoItem: string;
     qtd: number;

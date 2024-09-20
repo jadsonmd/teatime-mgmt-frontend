@@ -81,6 +81,7 @@ export class ProdutoService {
   incluirEstoque(produtoItem: GerenciarEstoqueDTO) {
     produtoItem.idUnidadeDestino = this.user.idUnidade;
     produtoItem.idUsuarioRecebeu = this.user.id;
+    produtoItem.idParceiro = this.user.idParceiro;
     return this.httpClient.post<Produto>(
       `${environment.apiUrl}/api/teatime/produtos/incluir-stock`,
       produtoItem,
@@ -91,6 +92,7 @@ export class ProdutoService {
   baixarEstoque(produtoItem: GerenciarEstoqueDTO) {
     produtoItem.idUnidadeDestino = this.user.idUnidade;
     produtoItem.idUsuarioRecebeu = this.user.id;
+    produtoItem.idParceiro = this.user.idParceiro;
     return this.httpClient.post<Produto>(
       `${environment.apiUrl}/api/teatime/produtos/baixar-stock`,
       produtoItem,

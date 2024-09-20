@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class IncluirEstoqueComponent {
   produtoItem: GerenciarEstoqueDTO = {
+    idParceiro: '',
     idProduto: '',
     idProdutoItem: '',
     qtd: 0,
@@ -45,6 +46,7 @@ export class IncluirEstoqueComponent {
 
   limparCampos(): void {
     this.produtoItem = {
+      idParceiro: '',
       idProduto: '',
       idProdutoItem: '',
       qtd: 0,

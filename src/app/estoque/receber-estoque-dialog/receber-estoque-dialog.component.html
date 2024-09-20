@@ -9,10 +9,11 @@
         (selectionChange)="getItemSelecionado(itens.selectedOptions.selected)"
       >
         <mat-list-option *ngFor="let item of transferenciaEstoqueDetalhes" [value]="item">
-          <div>
-            <span>{{ item.unidadeOrigem.nome }}</span> 
+          <div [matTooltip]="item.transferenciaEstoque.produtoItem.produto.nome"
+          matTooltipPosition="below">
+            <span>{{ item.unidadeOrigem.nome }} -> {{ item.unidadeDestino.nome }}</span> 
             <span>{{ item.dataTransferencia | date: 'dd/MM/yyyy' }}</span>
-            <span>{{ item.unidadeDestino.nome }}</span>
+            <span>{{ item.transferenciaEstoque.produtoItem.produto.codigo }} - {{ item.transferenciaEstoque.produtoItem.lote }}</span>
             <span>{{ item.quantidade }}</span>
           </div>
         </mat-list-option>

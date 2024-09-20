@@ -1,3 +1,5 @@
+import { ProdutoItem } from "./transferencia-estoque-list";
+
 export interface TransferenciaEstoqueDetalhe {
     dataTransferencia: Date;
     id: string;
@@ -21,6 +23,7 @@ export interface TransferenciaEstoque {
     idUnidade: number;
     quantidade: number;
     unidade: Unidade;
+    produtoItem: ProdutoItem;
 }
 
 export interface Unidade {
