@@ -14,6 +14,8 @@ export interface TransferenciaEstoqueDetalhe {
     transferenciaEstoque: TransferenciaEstoque;
     unidadeOrigem: Unidade;
     unidadeDestino: Unidade;
+    usuarioRecebeu: Usuario;
+    usuarioTransferiu: Usuario;
 }
 
 export interface TransferenciaEstoque {
@@ -30,4 +32,12 @@ export interface Unidade {
     id: string;
     nome: string;
     idParceiro: string;
+}
+
+export interface Usuario {
+    id: string;
+    name: string;
+    email: string;
+    idParceiro: string;
+    idUnidade: number;
 }

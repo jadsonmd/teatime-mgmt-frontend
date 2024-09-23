@@ -16,10 +16,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { TransferirEstoqueDialogComponent } from './transferir-estoque-dialog/transferir-estoque-dialog.component';
 import { ReceberEstoqueDialogComponent } from './receber-estoque-dialog/receber-estoque-dialog.component';
 import { MatListModule } from '@angular/material/list';
+import { HistoricoMovimentacaoItemDialogComponent } from './historico-movimentacao-item-dialog/historico-movimentacao-item-dialog.component';
 
 
 @NgModule({
-  declarations: [EstoqueComponent, TransferirEstoqueDialogComponent, ReceberEstoqueDialogComponent ],
+  declarations: [EstoqueComponent, TransferirEstoqueDialogComponent, ReceberEstoqueDialogComponent, HistoricoMovimentacaoItemDialogComponent],
   imports: [
     FormsModule,
     CommonModule,

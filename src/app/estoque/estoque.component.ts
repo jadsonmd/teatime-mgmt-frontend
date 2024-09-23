@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from '../service/produto.service';
 import { TransferenciaEstoqueList } from './transferencia-estoque-list';
 import { TransferirEstoqueDTO } from './transferir-estoque-dto';
-import { ReceberEstoqueDTO } from './receber-estoque-dto';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TransferirEstoqueDialogComponent } from './transferir-estoque-dialog/transferir-estoque-dialog.component';
 import { ReceberEstoqueDialogComponent } from './receber-estoque-dialog/receber-estoque-dialog.component';
+import { HistoricoMovimentacaoItemDialogComponent } from './historico-movimentacao-item-dialog/historico-movimentacao-item-dialog.component';
 
 @Component({
   selector: 'app-estoque',
@@ -73,6 +73,14 @@ export class EstoqueComponent implements OnInit {
     });
   }
 
+  openDialogHistorico(idProdutoItem: string): void {
+    const dialogRef = this.dialog.open(HistoricoMovimentacaoItemDialogComponent, {
+      width: '700px',
+      data: idProdutoItem,
+    });
+  }
+
+
   transferir(estoque: TransferenciaEstoqueList): void {
     const transferirEstoqueDTO: TransferirEstoqueDTO = {
       idProdutoItem: estoque.idProdutoItem,
@@ -84,6 +92,11 @@ export class EstoqueComponent implements OnInit {
       idUsuarioTransferiu: '',
     };
     this.openDialogTransferir(transferirEstoqueDTO);
+  }
+
+  visualizarHistorico(estoque: TransferenciaEstoqueList): void {
+    this.openDialogHistorico(estoque.idProdutoItem);
+    
   }
 
   receber(): void {

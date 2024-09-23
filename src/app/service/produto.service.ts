@@ -132,4 +132,11 @@ export class ProdutoService {
       this.httpOptions
     );
   }
+
+  getHistoricoMovimentacaoItem(idProdutoItem: string): Observable<TransferenciaEstoqueDetalhe[]> {
+    return this.httpClient.get<TransferenciaEstoqueDetalhe[]>(
+      `${environment.apiUrl}/api/teatime/produtos/historico-movimentacao-item/idProdutoItem/${idProdutoItem}`,
+      this.httpOptions
+    );
+  }
 }

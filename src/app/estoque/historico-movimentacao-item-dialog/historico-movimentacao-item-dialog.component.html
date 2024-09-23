@@ -1,0 +1,30 @@
+<mat-dialog-content>
+  <h2 mat-dialog-title>Histórico de Movimentação</h2>
+
+  <mat-selection-list
+  #itens
+  [multiple]="false"
+>
+  <mat-list-option *ngFor="let item of data | async" [value]="item" >
+    <div >
+    <span matTooltip="Usuário recebeu" matTooltipPosition="below">
+        {{ item.usuarioRecebeu ? item.usuarioRecebeu.name.substring(0, 8) : 'Sem User' }}
+    </span>
+    <span matTooltip="Data ocorrência" matTooltipPosition="below">
+        {{ item.dataTransferencia | date: 'dd/MM/yyyy HH:MM' }}
+    </span>
+    <span [matTooltip]="item.transferenciaEstoque.produtoItem.produto.nome" matTooltipPosition="below">
+    {{ item.transferenciaEstoque.produtoItem.produto.codigo }} - {{ item.transferenciaEstoque.produtoItem.lote }}
+    </span>
+    <span matTooltip="origem -> destino" matTooltipPosition="below">
+        {{ item.unidadeOrigem ? item.unidadeOrigem.nome.substring(0, 6): 'Fornec' }} -> 
+        {{ item.unidadeDestino.nome.substring(0, 6) }}
+    </span>
+
+    <span [matTooltip]="item.usuarioTransferiu ? 'Usuário transferiu: '+item.usuarioTransferiu.name.substring(0, 8) : 'Usuário transferiu: Sem User' " matTooltipPosition="below">{{ item.tipoMovimentacao.substring(0, 5) }}</span>
+    </div>
+  </mat-list-option>
+</mat-selection-list>
+
+</mat-dialog-content>
+
