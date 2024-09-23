@@ -11,7 +11,7 @@
         {{ item.usuarioRecebeu ? item.usuarioRecebeu.name.substring(0, 8) : 'Sem User' }}
     </span>
     <span matTooltip="Data ocorrência" matTooltipPosition="below">
-        {{ item.dataTransferencia | date: 'dd/MM/yyyy HH:MM' }}
+        {{ item.dataTransferencia | date: 'dd/MM/yyyy hh:mm' }}
     </span>
     <span [matTooltip]="item.transferenciaEstoque.produtoItem.produto.nome" matTooltipPosition="below">
     {{ item.transferenciaEstoque.produtoItem.produto.codigo }} - {{ item.transferenciaEstoque.produtoItem.lote }}
