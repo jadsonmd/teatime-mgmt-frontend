@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ProdutoService } from '../service/produto.service';
-import { TransferenciaEstoqueList } from './transferencia-estoque-list';
-import { TransferirEstoqueDTO } from './transferir-estoque-dto';
+import { TransferenciaEstoqueList } from '../interface/dto/transferencia-estoque-list';
+import { TransferirEstoqueDTO } from '../interface/dto/transferir-estoque-dto';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TransferirEstoqueDialogComponent } from './transferir-estoque-dialog/transferir-estoque-dialog.component';
 import { ReceberEstoqueDialogComponent } from './receber-estoque-dialog/receber-estoque-dialog.component';
 import { HistoricoMovimentacaoItemDialogComponent } from './historico-movimentacao-item-dialog/historico-movimentacao-item-dialog.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { TransferenciaEstoque } from '../interface/transferencia-estoque';
 
 @Component({
   selector: 'app-estoque',
   templateUrl: './estoque.component.html',
   styleUrl: './estoque.component.scss',
 })
-export class EstoqueComponent implements OnInit {
+export class EstoqueComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'codigo',
     'nome',
@@ -24,7 +28,9 @@ export class EstoqueComponent implements OnInit {
     'star',
   ];
 
-  dataSource: TransferenciaEstoqueList[] = [];
+  dataSource: MatTableDataSource<TransferenciaEstoqueList> = new MatTableDataSource<TransferenciaEstoqueList>();
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private produtoService: ProdutoService,
@@ -33,9 +39,26 @@ export class EstoqueComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.produtoService.findAllTransferenciaEstoque().subscribe((estoques) => {
-      this.dataSource = estoques;
+    this.produtoService.findAllTransferenciaEstoque().subscribe((estoques: TransferenciaEstoque[]) => {
+      this.dataSource = new MatTableDataSource<TransferenciaEstoqueList>(estoques.map((estoque) => {
+        return {
+          id: estoque.id,
+          codigoProduto: estoque.produtoItem.produto.codigo,
+          nomeProduto: estoque.produtoItem.produto.nome,
+          lote: estoque.produtoItem.lote,
+          dataValidade: estoque.produtoItem.dataValidade,
+          nomeUnidade: estoque.unidade.nome,
+          quantidade: estoque.quantidade,
+          idProdutoItem: estoque.idProdutoItem,
+          idUnidade: estoque.idUnidade
+        };
+      }));
     });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   openDialogTransferir(transferirEstoqueDTO: TransferirEstoqueDTO): void {
@@ -49,7 +72,19 @@ export class EstoqueComponent implements OnInit {
         this.produtoService
           .findAllTransferenciaEstoque()
           .subscribe((estoques) => {
-            this.dataSource = estoques;
+            this.dataSource = new MatTableDataSource<TransferenciaEstoqueList>(estoques.map((estoque) => {
+              return {
+                id: estoque.id,
+                codigoProduto: estoque.produtoItem.produto.codigo,
+                nomeProduto: estoque.produtoItem.produto.nome,
+                lote: estoque.produtoItem.lote,
+                dataValidade: estoque.produtoItem.dataValidade,
+                nomeUnidade: estoque.unidade.nome,
+                quantidade: estoque.quantidade,
+                idProdutoItem: estoque.idProdutoItem,
+                idUnidade: estoque.idUnidade
+              };
+            }));
           });
         this.openSnackBar('Transferencia criada!', 'OK', 'success');
       }
@@ -66,7 +101,19 @@ export class EstoqueComponent implements OnInit {
         this.produtoService
           .findAllTransferenciaEstoque()
           .subscribe((estoques) => {
-            this.dataSource = estoques;
+            this.dataSource = new MatTableDataSource<TransferenciaEstoqueList>(estoques.map((estoque) => {
+              return {
+                id: estoque.id,
+                codigoProduto: estoque.produtoItem.produto.codigo,
+                nomeProduto: estoque.produtoItem.produto.nome,
+                lote: estoque.produtoItem.lote,
+                dataValidade: estoque.produtoItem.dataValidade,
+                nomeUnidade: estoque.unidade.nome,
+                quantidade: estoque.quantidade,
+                idProdutoItem: estoque.idProdutoItem,
+                idUnidade: estoque.idUnidade
+              };
+            }));
           });
         // this.openSnackBar('Recebimento realizado!', 'OK', 'success');
       }
@@ -90,6 +137,7 @@ export class EstoqueComponent implements OnInit {
       idUnidadeDestino: 0,
       observacao: '',
       idUsuarioTransferiu: '',
+      quantidadeDisponivel: estoque.quantidade,
     };
     this.openDialogTransferir(transferirEstoqueDTO);
   }
@@ -101,6 +149,15 @@ export class EstoqueComponent implements OnInit {
 
   receber(): void {
     this.openDialogReceber();
+  }
+
+  filtrar(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   openSnackBar(msg: string, btn: string, tipo: string): void {

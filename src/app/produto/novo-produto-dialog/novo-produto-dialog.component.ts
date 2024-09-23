@@ -4,9 +4,9 @@ import { NovoProduto } from './novo-produto';
 import { ProdutoService } from '../../service/produto.service';
 import { ProdutoItem } from '../produto-item';
 import { CadastroService } from '../../service/cadastro.service';
-import { EspecieProduto } from '../../cadastro/especie-produto';
+import { EspecieProduto } from '../../interface/especie-produto';
 import { Observable } from 'rxjs';
-import { TipoProduto } from '../../cadastro/tipo-produto';
+import { TipoProduto } from '../../interface/tipo-produto';
 
 @Component({
   selector: 'app-novo-produto-dialog',

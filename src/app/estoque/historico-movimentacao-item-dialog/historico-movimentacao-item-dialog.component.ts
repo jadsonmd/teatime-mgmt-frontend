@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ProdutoService } from '../../service/produto.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TransferenciaEstoqueDetalhe } from '../transferencia-estoque-detalhe';
+import { TransferenciaEstoqueDetalhe } from '../../interface/transferencia-estoque-detalhe';
 import { Observable } from 'rxjs';
 
 @Component({

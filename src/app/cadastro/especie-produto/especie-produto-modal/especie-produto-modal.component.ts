@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { EspecieProduto } from '../../especie-produto';
+import { EspecieProduto } from '../../../interface/especie-produto';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CadastroService } from '../../../service/cadastro.service';
 

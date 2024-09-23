@@ -7,4 +7,5 @@ export interface TransferirEstoqueDTO {
     quantidade: number;
     observacao: string;
     idUsuarioTransferiu: string;
+    quantidadeDisponivel: number;
 }

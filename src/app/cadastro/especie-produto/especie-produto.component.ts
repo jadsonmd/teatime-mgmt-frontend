@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EspecieProduto } from '../especie-produto';
+import { EspecieProduto } from '../../interface/especie-produto';
 import { CadastroService } from '../../service/cadastro.service';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';

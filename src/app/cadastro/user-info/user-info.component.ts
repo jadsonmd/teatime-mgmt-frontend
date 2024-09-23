@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserInfo } from '../user-info';
+import { UserInfo } from '../../interface/dto/user-info';
 import { ParceiroService } from '../../service/parceiro.service';
-import { Unidade } from '../../estoque/transferencia-estoque-list';
 import { AuthService } from '@auth0/auth0-angular';
-import { UsuarioService } from '../../service/usuario.service';
-import { J } from '@angular/cdk/keycodes';
 import { Router } from '@angular/router';
+import { Unidade } from '../../interface/unidade';
 
 @Component({
   selector: 'app-user-info',

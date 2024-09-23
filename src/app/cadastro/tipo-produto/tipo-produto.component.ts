@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TipoProduto } from '../tipo-produto';
+import { TipoProduto } from '../../interface/tipo-produto';
 import { CadastroService } from '../../service/cadastro.service';
 import { TipoProdutoModalComponent } from './tipo-produto-modal/tipo-produto-modal.component';
 import { MatSnackBar } from '@angular/material/snack-bar';

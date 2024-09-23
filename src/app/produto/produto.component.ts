@@ -3,7 +3,6 @@ import { ProdutoService } from '../service/produto.service';
 import { ProdutoItem } from './produto-item';
 import { NovoProdutoDialogComponent } from './novo-produto-dialog/novo-produto-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { NovoProduto } from './novo-produto-dialog/novo-produto';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';

@@ -7,11 +7,12 @@ import { AuthService } from '@auth0/auth0-angular';
 import { Produto } from '../produto/produto';
 import { GerenciarEstoqueDTO } from '../produto/gerenciar-estoque-dto';
 import { ProdutoItemEntity } from '../produto/produto-item-entity';
-import { TransferenciaEstoqueList } from '../estoque/transferencia-estoque-list';
-import { TransferirEstoqueDTO } from '../estoque/transferir-estoque-dto';
-import { ReceberEstoqueDTO } from '../estoque/receber-estoque-dto';
-import { TransferenciaEstoqueDetalhe } from '../estoque/transferencia-estoque-detalhe';
+import { TransferenciaEstoqueList } from '../interface/dto/transferencia-estoque-list';
+import { TransferirEstoqueDTO } from '../interface/dto/transferir-estoque-dto';
+import { ReceberEstoqueDTO } from '../interface/dto/receber-estoque-dto';
+import { TransferenciaEstoqueDetalhe } from '../interface/transferencia-estoque-detalhe';
 import { environment } from '../../environments/environment';
+import { TransferenciaEstoque } from '../interface/transferencia-estoque';
 
 @Injectable({
   providedIn: 'root',
@@ -100,8 +101,8 @@ export class ProdutoService {
     );
   }
 
-  findAllTransferenciaEstoque(): Observable<TransferenciaEstoqueList[]> {
-    return this.httpClient.get<TransferenciaEstoqueList[]>(
+  findAllTransferenciaEstoque(): Observable<TransferenciaEstoque[]> {
+    return this.httpClient.get<TransferenciaEstoque[]>(
       `${environment.apiUrl}/api/teatime/produtos/lista-trasferecia-stock/idParceiro/${this.user.idParceiro}`,
       this.httpOptions
     );

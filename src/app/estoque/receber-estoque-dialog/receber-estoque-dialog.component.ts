@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ProdutoService } from '../../service/produto.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { TransferenciaEstoqueDetalhe } from '../transferencia-estoque-detalhe';
+import { TransferenciaEstoqueDetalhe } from '../../interface/transferencia-estoque-detalhe';
 import { MatListOption } from '@angular/material/list';
-import { ReceberEstoqueDTO } from '../receber-estoque-dto';
+import { ReceberEstoqueDTO } from '../../interface/dto/receber-estoque-dto';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

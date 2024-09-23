@@ -1,9 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Unidade } from '../estoque/transferencia-estoque-list';
 import { Observable } from 'rxjs';
-import { EspecieProduto } from '../cadastro/especie-produto';
-import { TipoProduto } from '../cadastro/tipo-produto';
+import { EspecieProduto } from '../interface/especie-produto';
+import { TipoProduto } from '../interface/tipo-produto';
 import { environment } from '../../environments/environment';
 
 @Injectable({

@@ -3,7 +3,7 @@
 
   <mat-selection-list
   #itens
-  [multiple]="false"
+  [multiple]="true"
 >
   <mat-list-option *ngFor="let item of data | async" [value]="item" >
     <div >
@@ -21,7 +21,10 @@
         {{ item.unidadeDestino.nome.substring(0, 6) }}
     </span>
 
+    <span matTooltip="Quantidade movimentada" matTooltipPosition="below">{{ item.quantidade }}</span>
+
     <span [matTooltip]="item.usuarioTransferiu ? 'Usuário transferiu: '+item.usuarioTransferiu.name.substring(0, 8) : 'Usuário transferiu: Sem User' " matTooltipPosition="below">{{ item.tipoMovimentacao.substring(0, 5) }}</span>
+    
     </div>
   </mat-list-option>
 </mat-selection-list>

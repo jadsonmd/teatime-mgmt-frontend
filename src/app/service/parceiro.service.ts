@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Unidade } from '../estoque/transferencia-estoque-list';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { UserInfo } from '../cadastro/user-info';
+import { UserInfo } from '../interface/dto/user-info';
+import { Unidade } from '../interface/unidade';
 
 @Injectable({
   providedIn: 'root'
