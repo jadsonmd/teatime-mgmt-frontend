@@ -14,6 +14,10 @@ import { MatSort } from '@angular/material/sort';
   styleUrl: './produto.component.scss',
 })
 export class ProdutoComponent implements OnInit, AfterViewInit {
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   displayedColumns: string[] = [
     'codigo',
     'nome',
@@ -26,8 +30,7 @@ export class ProdutoComponent implements OnInit, AfterViewInit {
   ];
   dataSource: MatTableDataSource<ProdutoItem> = new MatTableDataSource<ProdutoItem>();
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  produtosProximoVencer: ProdutoItem[] = [];
 
   constructor(
     private produtoService: ProdutoService,
@@ -38,7 +41,17 @@ export class ProdutoComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.produtoService
       .findAll()
-      .subscribe((produto) => (this.dataSource = new MatTableDataSource<ProdutoItem>(produto)));
+      .subscribe((produto) => {
+        this.dataSource = new MatTableDataSource<ProdutoItem>(produto);
+        const umMes = new Date();
+        umMes.setMonth(umMes.getMonth() + 1);
+        this.produtosProximoVencer = produto.filter((prod: ProdutoItem) => {
+          if(new Date(prod.dataValidade) < umMes && prod.quantidade > 0) {
+            return true;
+          }
+          return false;
+        });
+      });
   }
 
   ngAfterViewInit() {
@@ -109,6 +122,13 @@ export class ProdutoComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  selectProduto(selected: any, produtoItem: ProdutoItem) {
+    if (selected) 
+      this.dataSource.filter = produtoItem.idProdutoItem;
+    else 
+      this.dataSource.filter = '';
   }
 
 }

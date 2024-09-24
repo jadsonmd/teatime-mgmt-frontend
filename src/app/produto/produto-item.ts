@@ -1,7 +1,7 @@
 export interface ProdutoItem {
 
     idProduto: string;
-    dataValidade: string;
+    dataValidade: Date;
     precoCompra: number;
     idProdutoItem: string;
     quantidade: number;

@@ -14,6 +14,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [ProdutoComponent, NovoProdutoDialogComponent],
@@ -28,7 +30,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTooltipModule,
     MatSelectModule,
+    MatChipsModule,
     MatSortModule,
     MatPaginatorModule
   ]

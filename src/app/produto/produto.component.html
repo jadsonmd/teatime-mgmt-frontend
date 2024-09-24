@@ -1,5 +1,11 @@
 <h1>Produto</h1>
 
+<mat-chip-listbox class="mat-mdc-chip-set-stacked center-filter" aria-label="Produtos vencidos ou próximos a vencer.">
+    <mat-chip-option  *ngFor="let item of produtosProximoVencer" (click)="selectProduto(matOption.selected, item)" #matOption matTooltip="Produtos vencidos ou vencerão em um mês" matTooltipPosition="below">
+      {{item.codigo}} - {{item.nome}} - {{item.lote}} - {{item.dataValidade | date:'dd/MM/yyyy'}}
+    </mat-chip-option>
+</mat-chip-listbox>
+<br />
 <div class="menu-botoes">
   <button mat-flat-button color="primary" (click)="novo()">
     Criar produto
