@@ -13,9 +13,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { CustomPaginatorIntl } from '../custom/custom-paginator-intl';
 
 @NgModule({
   declarations: [ProdutoComponent, NovoProdutoDialogComponent],
@@ -35,6 +36,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatChipsModule,
     MatSortModule,
     MatPaginatorModule
-  ]
+  ],
+  providers: [
+    { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl }
+  ],
 })
 export class ProdutoModule { }

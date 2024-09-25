@@ -17,8 +17,9 @@ import { TransferirEstoqueDialogComponent } from './transferir-estoque-dialog/tr
 import { ReceberEstoqueDialogComponent } from './receber-estoque-dialog/receber-estoque-dialog.component';
 import { MatListModule } from '@angular/material/list';
 import { HistoricoMovimentacaoItemDialogComponent } from './historico-movimentacao-item-dialog/historico-movimentacao-item-dialog.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { CustomPaginatorIntl } from '../custom/custom-paginator-intl';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatListModule,
     MatSortModule,
     MatPaginatorModule
-  ]
+  ],
+  providers: [{ provide: MatPaginatorIntl, useClass: CustomPaginatorIntl }],
 })
 export class EstoqueModule { }
