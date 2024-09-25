@@ -41,17 +41,19 @@ export class ProdutoComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.produtoService
       .findAll()
-      .subscribe((produto) => {
-        this.dataSource = new MatTableDataSource<ProdutoItem>(produto);
+      .subscribe((produtoItens) => {
+        this.atualizarListaProdutos(produtoItens);
+
         const umMes = new Date();
         umMes.setMonth(umMes.getMonth() + 1);
-        this.produtosProximoVencer = produto.filter((prod: ProdutoItem) => {
+        this.produtosProximoVencer = produtoItens.filter((prod: ProdutoItem) => {
           if(new Date(prod.dataValidade) < umMes && prod.quantidade > 0) {
             return true;
           }
           return false;
         });
-      });
+      }
+    );
   }
 
   ngAfterViewInit() {
@@ -69,7 +71,7 @@ export class ProdutoComponent implements OnInit, AfterViewInit {
       if ('salvar' === result) {
         this.produtoService
         .findAll()
-        .subscribe((produto) => (this.dataSource = new MatTableDataSource<ProdutoItem>(produto)));
+        .subscribe((produtoItens) => (this.atualizarListaProdutos(produtoItens)));
 
         this.openSnackBar('Produto salvo com sucesso.', 'OK', 'success');
       }
@@ -99,7 +101,7 @@ export class ProdutoComponent implements OnInit, AfterViewInit {
       this.produtoService.deleteProduto(produto.idProduto).subscribe(() => {
         this.produtoService
           .findAll()
-          .subscribe((produto) => (this.dataSource = new MatTableDataSource<ProdutoItem>(produto)));
+          .subscribe((produtoItens) => (this.atualizarListaProdutos(produtoItens)));
           this.openSnackBar(
             `Produto, código: ${produto.codigo}, excluído com sucesso.`,
             'OK',
@@ -113,6 +115,12 @@ export class ProdutoComponent implements OnInit, AfterViewInit {
         'alert'
       );
     }
+  }
+
+  atualizarListaProdutos(produtoItens: ProdutoItem[]) {
+    this.dataSource = new MatTableDataSource<ProdutoItem>(produtoItens);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   filtrar(event: Event) {

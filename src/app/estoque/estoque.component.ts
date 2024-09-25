@@ -40,19 +40,7 @@ export class EstoqueComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.produtoService.findAllTransferenciaEstoque().subscribe((estoques: TransferenciaEstoque[]) => {
-      this.dataSource = new MatTableDataSource<TransferenciaEstoqueList>(estoques.map((estoque) => {
-        return {
-          id: estoque.id,
-          codigoProduto: estoque.produtoItem.produto.codigo,
-          nomeProduto: estoque.produtoItem.produto.nome,
-          lote: estoque.produtoItem.lote,
-          dataValidade: estoque.produtoItem.dataValidade,
-          nomeUnidade: estoque.unidade.nome,
-          quantidade: estoque.quantidade,
-          idProdutoItem: estoque.idProdutoItem,
-          idUnidade: estoque.idUnidade
-        };
-      }));
+      this.atualizarLista(estoques);
     });
   }
 
@@ -72,19 +60,7 @@ export class EstoqueComponent implements OnInit, AfterViewInit {
         this.produtoService
           .findAllTransferenciaEstoque()
           .subscribe((estoques) => {
-            this.dataSource = new MatTableDataSource<TransferenciaEstoqueList>(estoques.map((estoque) => {
-              return {
-                id: estoque.id,
-                codigoProduto: estoque.produtoItem.produto.codigo,
-                nomeProduto: estoque.produtoItem.produto.nome,
-                lote: estoque.produtoItem.lote,
-                dataValidade: estoque.produtoItem.dataValidade,
-                nomeUnidade: estoque.unidade.nome,
-                quantidade: estoque.quantidade,
-                idProdutoItem: estoque.idProdutoItem,
-                idUnidade: estoque.idUnidade
-              };
-            }));
+            this.atualizarLista(estoques);
           });
         this.openSnackBar('Transferencia criada!', 'OK', 'success');
       }
@@ -101,21 +77,9 @@ export class EstoqueComponent implements OnInit, AfterViewInit {
         this.produtoService
           .findAllTransferenciaEstoque()
           .subscribe((estoques) => {
-            this.dataSource = new MatTableDataSource<TransferenciaEstoqueList>(estoques.map((estoque) => {
-              return {
-                id: estoque.id,
-                codigoProduto: estoque.produtoItem.produto.codigo,
-                nomeProduto: estoque.produtoItem.produto.nome,
-                lote: estoque.produtoItem.lote,
-                dataValidade: estoque.produtoItem.dataValidade,
-                nomeUnidade: estoque.unidade.nome,
-                quantidade: estoque.quantidade,
-                idProdutoItem: estoque.idProdutoItem,
-                idUnidade: estoque.idUnidade
-              };
-            }));
-          });
-        // this.openSnackBar('Recebimento realizado!', 'OK', 'success');
+            this.atualizarLista(estoques);
+          }
+        );
       }
     });
   }
@@ -127,6 +91,23 @@ export class EstoqueComponent implements OnInit, AfterViewInit {
     });
   }
 
+  atualizarLista(estoques: TransferenciaEstoque[]) {
+    this.dataSource = new MatTableDataSource<TransferenciaEstoqueList>(estoques.map((estoque) => {
+      return {
+        id: estoque.id,
+        codigoProduto: estoque.produtoItem.produto.codigo,
+        nomeProduto: estoque.produtoItem.produto.nome,
+        lote: estoque.produtoItem.lote,
+        dataValidade: estoque.produtoItem.dataValidade,
+        nomeUnidade: estoque.unidade.nome,
+        quantidade: estoque.quantidade,
+        idProdutoItem: estoque.idProdutoItem,
+        idUnidade: estoque.idUnidade
+      };
+    }));
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
   transferir(estoque: TransferenciaEstoqueList): void {
     const transferirEstoqueDTO: TransferirEstoqueDTO = {
