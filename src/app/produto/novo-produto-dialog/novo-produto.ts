@@ -8,7 +8,8 @@ export interface NovoProduto {
     precoVenda: number;
     estoqueMin: number;
     estoqueMax: number;
-    idTipoProduto: number;
-    idEspecieProduto: number;
-
+    idTipoProduto: string;
+    idEspecieProduto: string;
+    idUnidadeMedida: string;
+    idFornecedor: string;
 }

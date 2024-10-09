@@ -21,6 +21,27 @@
     </div>
 
     <div class="form-fields">
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>Unidade Medida</mat-label>
+        <mat-select [(value)]="produto.idUnidadeMedida" name="produto.idUnidadeMedida">
+          <mat-option *ngFor="let unidadeMedida of unidadesMedida | async"
+              [value]="unidadeMedida.id">
+              {{ unidadeMedida.name }}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>Fornecedor</mat-label>
+        <mat-select [(ngModel)]="produto.idFornecedor" name="produto.idFornecedor">
+          <mat-option *ngFor="let fornecedor of fornecedores | async"
+              [value]="fornecedor.id">
+              {{ fornecedor.name }}
+            </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-fields">
       <mat-form-field appearance="outline">
         <mat-label>Estoque mínimo</mat-label>
         <input type="number" color="primary" matInput  [(ngModel)]="produto.estoqueMin" name="produto.estoqueMin" />

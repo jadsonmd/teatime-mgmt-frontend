@@ -7,8 +7,10 @@ export interface ProdutoItem {
     quantidade: number;
     estoqueMax: number;
     estoqueMin: number;
-    idEspecieProduto: number;
-    idTipoProduto: number;
+    idEspecieProduto: string;
+    idTipoProduto: string;
+    idUnidadeMedida: string;
+    idFornecedor: string;
     precoVenda: number;
     estoque: number;
     lote: string;
