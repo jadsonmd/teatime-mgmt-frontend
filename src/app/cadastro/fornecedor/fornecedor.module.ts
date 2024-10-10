@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UnidadeMedidaRoutingModule } from './unidade-medida-routing.module';
-import { UnidadeMedidaComponent } from './unidade-medida.component';
-import { UnidadeMedidaModalComponent } from './unidade-medida-modal/unidade-medida-modal.component';
-import { MatIconModule } from '@angular/material/icon';
+import { FornecedorRoutingModule } from './fornecedor-routing.module';
+import { FornecedorComponent } from './fornecedor.component';
+import { FornecedorModalComponent } from './fornecedor-modal/fornecedor-modal.component';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -15,10 +15,10 @@ import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
-  declarations: [UnidadeMedidaComponent, UnidadeMedidaModalComponent],
+  declarations: [FornecedorComponent, FornecedorModalComponent],
   imports: [
     CommonModule,
-    UnidadeMedidaRoutingModule,
+    FornecedorRoutingModule,
     FormsModule,
     MatTableModule,
     MatIconModule,
@@ -29,4 +29,4 @@ import { MatInputModule } from '@angular/material/input';
     MatDialogModule
   ]
 })
-export class UnidadeMedidaModule { }
+export class FornecedorModule { }

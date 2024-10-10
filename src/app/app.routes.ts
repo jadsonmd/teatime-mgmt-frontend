@@ -9,6 +9,7 @@ import { EspecieProdutoComponent } from './cadastro/especie-produto/especie-prod
 import { DashboardProdutoComponent } from './produto/dashboard-produto/dashboard-produto.component';
 import { UserInfoComponent } from './cadastro/user-info/user-info.component';
 import { UnidadeMedidaComponent } from './cadastro/unidade-medida/unidade-medida.component';
+import { FornecedorComponent } from './cadastro/fornecedor/fornecedor.component';
 
 export const routes: Routes = [
     { path: '', component: AppComponent},
@@ -21,6 +22,7 @@ export const routes: Routes = [
     { path: 'cadastro/especie-produto', component: EspecieProdutoComponent },
     { path: 'cadastro/info-usuario', component: UserInfoComponent },
     { path: 'cadastro/unidade-medida', component: UnidadeMedidaComponent },
+    { path: 'cadastro/fornecedor', component: FornecedorComponent },
     { path: 'login/callback', component: LoginComponent },
     { path: '**', redirectTo: ''}
 

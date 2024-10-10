@@ -64,6 +64,12 @@ const routes: Routes = [
       (await import('./cadastro/unidade-medida/unidade-medida.module')).UnidadeMedidaModule
   },
   {
+    path: 'cadastro/fornecedor',
+    canActivate: [authGuardFn],
+    loadChildren: async () =>
+      (await import('./cadastro/fornecedor/fornecedor.module')).FornecedorModule
+  },
+  {
     path: '**',
     redirectTo: 'inicio',
     pathMatch: 'full'

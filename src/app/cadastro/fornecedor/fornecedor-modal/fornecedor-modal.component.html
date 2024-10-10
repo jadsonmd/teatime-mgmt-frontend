@@ -1,0 +1,54 @@
+<mat-dialog-content>
+  <h2 mat-dialog-title>{{ title }}</h2>
+
+  <form class="tipo-produto-form" (onSubmit)="onSubmit()">
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>Nome</mat-label>
+        <input
+          color="primary"
+          matInput
+          [(ngModel)]="fornecedor.name"
+          name="fornecedor.name"
+          (ngModelChange)="fornecedor.name = $event.toUpperCase()"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>CNPJ</mat-label>
+        <input
+          color="primary"
+          matInput
+          [(ngModel)]="fornecedor.cnpj"
+          name="fornecedor.cnpj"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="form-fields">
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>Telefone</mat-label>
+        <input type="tel"
+          color="primary"
+          matInput
+          [(ngModel)]="fornecedor.fone"
+          name="fornecedor.fone"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-two-column">
+        <mat-label>EMAIL</mat-label>
+        <input type="email"
+          color="primary"
+          matInput
+          [(ngModel)]="fornecedor.email"
+          name="fornecedor.email"
+        />
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancelar()">Cancelar</button>
+  <button mat-button cdkFocusInitial (click)="onSubmit()">Salvar</button>
+</mat-dialog-actions>
