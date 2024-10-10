@@ -49,6 +49,7 @@ export class ReceberEstoqueDialogComponent implements OnInit {
       };
       this.produtoService.receberEstoque(receberEstoqueDTO).subscribe(() => {
         this.findItensReceber();
+        this.fecharModal('salvar');
         this.openSnackBar('Recebimento realizado!', 'OK', 'success');
       });
     }

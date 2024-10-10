@@ -53,6 +53,10 @@ export class TreeMenuComponent {
       link: '/',
       children: [
         {
+          name: 'Informações usuário',
+          link: '/cadastro/info-usuario',
+        },
+        {
           name: 'Tipo produto',
           link: '/cadastro/tipo-produto',
         },
@@ -61,8 +65,12 @@ export class TreeMenuComponent {
           link: '/cadastro/especie-produto',
         },
         {
-          name: 'Informações usuário',
-          link: '/cadastro/info-usuario',
+          name: 'Fornecedor',
+          link: '/cadastro/fornecedor',
+        },
+        {
+          name: 'Unidade medida',
+          link: '/cadastro/unidade-medida',
         },
       ],
     },

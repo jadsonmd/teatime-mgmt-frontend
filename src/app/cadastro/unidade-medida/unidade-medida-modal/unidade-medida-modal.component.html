@@ -1,16 +1,17 @@
 <mat-dialog-content>
     <h2 mat-dialog-title>{{ title }}</h2>
   
-    <form class="especie-produto-form" (onSubmit)="onSubmit()">
+    <form class="tipo-produto-form" (onSubmit)="onSubmit()">
 
       <div class="form-fields">
         <mat-form-field appearance="outline" class="full-two-column">
-          <mat-label>Prefixo</mat-label>
-          <input color="primary" matInput [(ngModel)]="especieProduto.prefixo" name="especieProduto.prefixo" (ngModelChange)="especieProduto.prefixo = $event.toUpperCase()"/>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="full-two-column">
           <mat-label>Nome</mat-label>
-          <input color="primary" matInput [(ngModel)]="especieProduto.name" name="produto.name"/>
+          <input color="primary" matInput [(ngModel)]="unidadeMedida.name" name="unidadeMedida.name"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-two-column">
+          <mat-label>Sigla</mat-label>
+          <input color="primary" matInput [(ngModel)]="unidadeMedida.sigla" name="unidadeMedida.sigla" (ngModelChange)="unidadeMedida.sigla = $event.toUpperCase()"/>
         </mat-form-field>
       </div>
 

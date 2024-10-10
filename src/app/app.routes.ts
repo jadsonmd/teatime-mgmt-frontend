@@ -8,6 +8,7 @@ import { EstoqueComponent } from './estoque/estoque.component';
 import { EspecieProdutoComponent } from './cadastro/especie-produto/especie-produto.component';
 import { DashboardProdutoComponent } from './produto/dashboard-produto/dashboard-produto.component';
 import { UserInfoComponent } from './cadastro/user-info/user-info.component';
+import { UnidadeMedidaComponent } from './cadastro/unidade-medida/unidade-medida.component';
 
 export const routes: Routes = [
     { path: '', component: AppComponent},
@@ -19,6 +20,7 @@ export const routes: Routes = [
     { path: 'estoque/estoque-unidade', component: EstoqueComponent },
     { path: 'cadastro/especie-produto', component: EspecieProdutoComponent },
     { path: 'cadastro/info-usuario', component: UserInfoComponent },
+    { path: 'cadastro/unidade-medida', component: UnidadeMedidaComponent },
     { path: 'login/callback', component: LoginComponent },
     { path: '**', redirectTo: ''}
 
