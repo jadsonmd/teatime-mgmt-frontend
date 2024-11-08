@@ -3,11 +3,29 @@ import { Produto } from '../produto';
 import { GerenciarEstoqueDTO } from '../gerenciar-estoque-dto';
 import { ProdutoService } from '../../service/produto.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats } from '@angular/material/core';
+import { CustomDatepicker } from '../../custom/custom-datepicker';
+
+export const APP_DATE_FORMATS: MatDateFormats = {
+  parse: {
+    dateInput: { month: 'short', year: 'numeric', day: 'numeric' },
+  },
+  display: {
+    dateInput: 'input',
+    monthYearLabel: { year: 'numeric', month: 'numeric' },
+    dateA11yLabel: { year: 'numeric', month: 'long', day: 'numeric'},
+    monthYearA11yLabel: { year: 'numeric', month: 'long' },
+  }
+};
 
 @Component({
   selector: 'app-incluir-estoque',
   templateUrl: './incluir-estoque.component.html',
   styleUrl: './incluir-estoque.component.scss',
+  providers: [
+    { provide: DateAdapter, useClass: CustomDatepicker },
+    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS },
+  ],
 })
 export class IncluirEstoqueComponent {
   produtoItem: GerenciarEstoqueDTO = {
@@ -28,7 +46,7 @@ export class IncluirEstoqueComponent {
   constructor(
     private produtoService: ProdutoService,
     private snackBar: MatSnackBar
-  ) {}
+) {}
 
   onSubmit(): void {
     this.produtoItem.idProduto = this.prod.id;
