@@ -1,26 +1,39 @@
-.vencimento {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 15px;
-    margin-left: 15px;
-    margin-right: 15px;
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.quantidade {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 15px;
-    margin-left: 15px;
-    margin-right: 15px;
+h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
-.precificacao {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 15px;
-    margin-left: 15px;
-    margin-right: 15px;
+.center-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.mat-expansion-panel {
+    .mat-expansion-panel-header {
+        .mat-expansion-panel-header-title {
+            width: 90%;
+        }
+        .mat-expansion-panel-header-description {
+            color: red;
+            display: flex;
+            justify-content: end;
+            width: 10%;
+        }
+    }
+    // margin-bottom:.25rem;
 }

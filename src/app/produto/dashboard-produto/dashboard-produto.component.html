@@ -1,22 +1,38 @@
-<span class="vencimento">
+<!-- <span class="vencimento">
     <app-card-dashboard title="3 Produtos" subtitle="Vencidos" content="No seu estoque!" icon="inventory_2"></app-card-dashboard>
     <app-card-dashboard title="10 Produtos" subtitle="Vencerão em 1 mês" content="No seu estoque!" icon="today"></app-card-dashboard>
     <app-card-dashboard title="15 Produtos" subtitle="Vencerão em 3 meses" content="No seu estoque!" icon="date_range"></app-card-dashboard>
     <app-card-dashboard title="30 Produtos" subtitle="Vencerão em 6 meses" content="No seu estoque!" icon="calendar_month"></app-card-dashboard>
 </span>
+-->
 
+<h1>Dashboard de produtos</h1>
 
-<span class="quantidade">
-    <app-card-dashboard title="50 Produtos" subtitle="Sem quantidade" content="No seu estoque!" icon="sentiment_very_dissatisfied"></app-card-dashboard>
-    <app-card-dashboard title="3 Produtos" subtitle="Abaixo do mínimo" content="No seu estoque!" icon="mood_bad"></app-card-dashboard>
-    <app-card-dashboard title="10 Produtos" subtitle="Dentro do desejado" content="No seu estoque!" icon="mood"></app-card-dashboard>
-    <app-card-dashboard title="15 Produtos" subtitle="Acima do máximo" content="No seu estoque!" icon="sentiment_neutral"></app-card-dashboard>
-</span>
+<mat-chip-listbox
+  class="center-filter"
+  aria-label="Selecione uma opção de filtro."
+>
+  <mat-chip-option
+    *ngFor="let button of filterButtons"
+    #matOption
+    (click)="findProdutos(matOption.selected, button.action)"
+  >
+    {{ button.nome }}
+  </mat-chip-option>
+</mat-chip-listbox>
 
+<h3>Foi encontrado {{ produtos.length }} produtos</h3>
 
-<span class="precificacao">
-    <app-card-dashboard title="500 Produtos" subtitle="No seu inventário" content="No seu estoque!" icon="inventory_2"></app-card-dashboard>
-    <app-card-dashboard title="1500 Itens" subtitle="No seu inventário" content="No seu estoque!" icon="inventory"></app-card-dashboard>
-    <app-card-dashboard title="50 Produtos" subtitle="Com margem menor 10%" content="No seu estoque!" icon="sentiment_neutral"></app-card-dashboard>
-    <app-card-dashboard title="50 Produtos" subtitle="Com margem maior 50%" content="No seu estoque!" icon="sentiment_very_satisfied"></app-card-dashboard>
-</span>
+  <mat-accordion>
+    <mat-expansion-panel hideToggle *ngFor="let produto of produtos">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ produto.codigo }} - {{ produto.nome }} - ({{ produto.marca }})
+        </mat-panel-title>
+        <mat-panel-description> {{ descricao }} </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>Estoque: {{ produto.estoque }}</p>
+      <p>Estoque Mínimo: {{ produto.estoqueMin }}</p>
+      <p>Estoque Máximo: {{ produto.estoqueMax }}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
