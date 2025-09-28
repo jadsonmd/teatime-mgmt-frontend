@@ -11,7 +11,7 @@ import { TransferenciaEstoqueList } from '../interface/dto/transferencia-estoque
 import { TransferirEstoqueDTO } from '../interface/dto/transferir-estoque-dto';
 import { ReceberEstoqueDTO } from '../interface/dto/receber-estoque-dto';
 import { TransferenciaEstoqueDetalhe } from '../interface/transferencia-estoque-detalhe';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.ts';
 import { TransferenciaEstoque } from '../interface/transferencia-estoque';
 
 @Injectable({

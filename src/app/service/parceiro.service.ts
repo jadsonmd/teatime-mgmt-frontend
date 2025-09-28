@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.ts';
 import { UserInfo } from '../interface/dto/user-info';
 import { Unidade } from '../interface/unidade';
 
