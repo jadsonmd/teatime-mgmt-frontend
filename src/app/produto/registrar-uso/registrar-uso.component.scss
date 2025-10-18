@@ -1,0 +1,38 @@
+.center-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    .registrar-uso-form {
+        min-width: 600px;
+        .form-fields {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            mat-form-field {
+                width: 48%;
+            }
+            mat-selection-list {
+                width: 100%;
+                mat-list-option {
+                    width: 100%;
+                    div {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+
+                    }
+                }
+            }
+        }
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            button {
+                margin-left: 10px;
+            }
+        }
+    }
+}

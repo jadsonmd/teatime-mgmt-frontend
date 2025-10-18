@@ -27,6 +27,12 @@ const routes: Routes = [
     loadChildren: async () =>
       (await import('./produto/baixar-estoque/baixar-estoque.module')).BaixarEstoqueModule
   },
+    {
+    path: 'produto/registrar-uso',
+    canActivate: [authGuardFn],
+    loadChildren: async () =>
+      (await import('./produto/registrar-uso/registrar-uso.module')).RegistrarUsoModule
+  },
   {
     path: 'produto/dashboard-produto',
     canActivate: [authGuardFn],

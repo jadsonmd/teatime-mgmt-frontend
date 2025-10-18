@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EspecieProduto } from '../interface/especie-produto';
 import { TipoProduto } from '../interface/tipo-produto';
-import { environment } from '../../environments/environment.ts';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CadastroService {
 
-  user: any;
+  user: any; 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };

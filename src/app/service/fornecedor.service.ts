@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Fornecedor } from '../interface/fornecedor';
-import { environment } from '../../environments/environment.ts';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({

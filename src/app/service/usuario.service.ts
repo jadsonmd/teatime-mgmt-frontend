@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NovoProduto } from '../produto/novo-produto-dialog/novo-produto';
 import { AuthService } from '@auth0/auth0-angular';
-import { environment } from '../../environments/environment.ts';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
