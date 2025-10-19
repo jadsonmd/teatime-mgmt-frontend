@@ -29,6 +29,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Commandos uteis>
 
-<!-- ng g c produto/registrar-uso -->
+<!-- ng g c produto/registrar-uso/registrar-uso-dialog -->
 <!-- ng g m produto/registrar-uso --routing --flat -->
 <!-- ng g s service/registrar-uso -->

@@ -1,38 +1,40 @@
-.center-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    .registrar-uso-form {
-        min-width: 600px;
-        .form-fields {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            mat-form-field {
-                width: 48%;
-            }
-            mat-selection-list {
-                width: 100%;
-                mat-list-option {
-                    width: 100%;
-                    div {
-                        width: 100%;
-                        display: flex;
-                        justify-content: space-between;
-
-                    }
-                }
-            }
-        }
-        .actions {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 20px;
-            button {
-                margin-left: 10px;
-            }
-        }
+.center-table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  .mat-elevation-z8 {
+    button {
+      border: none;
     }
+  }
+  .mat-column-star {
+    text-align: right;
+  }
+}
+
+.center-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.menu-botoes {
+  margin-bottom: 10px;
+  margin-right: 10px;
+  display: flex;
+  text-align: right;
+  justify-content: right;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

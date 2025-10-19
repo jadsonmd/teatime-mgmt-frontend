@@ -14,10 +14,15 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { RegistrarUsoDialogComponent } from './registrar-uso-dialog/registrar-uso-dialog.component';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { CustomPaginatorIntl } from '../../custom/custom-paginator-intl';
 
 @NgModule({
-  declarations: [RegistrarUsoComponent],
+  declarations: [RegistrarUsoComponent, RegistrarUsoDialogComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -33,8 +38,12 @@ import { MatSelectModule } from '@angular/material/select';
     MatSlideToggleModule,
     ReactiveFormsModule,
     MatSelectModule,
-    RegistrarUsoRoutingModule
+    MatDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    RegistrarUsoRoutingModule,
   ],
-  providers: [MatDatepickerModule]
+  providers: [MatDatepickerModule, { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl }],
 })
-export class RegistrarUsoModule { }
+export class RegistrarUsoModule {}

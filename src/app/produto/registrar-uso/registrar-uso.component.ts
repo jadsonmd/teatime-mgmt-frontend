@@ -1,86 +1,86 @@
-import { Component } from '@angular/core';
-import { GerenciarEstoqueDTO } from '../gerenciar-estoque-dto';
-import { Produto } from '../produto';
-import { ProdutoService } from '../../service/produto.service';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProdutoItemEntity } from '../produto-item-entity';
-import { MatListOption } from '@angular/material/list';
+import { RegistrarUsoDialogComponent } from './registrar-uso-dialog/registrar-uso-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { RegistrarUso } from '../../interface/registrar-uso';
-import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
-import { CustomDatepicker } from '../../custom/custom-datepicker';
-import { APP_DATE_FORMATS } from '../incluir-estoque/incluir-estoque.component';
 import { RegistrarUsoService } from '../../service/registrar-uso.service';
-import { Observable } from 'rxjs';
-import { Unidade } from '../../interface/unidade';
-import { ParceiroService } from '../../service/parceiro.service';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { RegistrarUsoDTO } from '../../interface/dto/registrar-uso-dto';
 
 @Component({
   selector: 'app-registrar-uso',
   templateUrl: './registrar-uso.component.html',
   styleUrl: './registrar-uso.component.scss',
-  providers: [
-      { provide: DateAdapter, useClass: CustomDatepicker },
-      { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS },
-    ],
 })
-export class RegistrarUsoComponent {
+export class RegistrarUsoComponent implements OnInit, AfterViewInit {
+  
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  dataSource: MatTableDataSource<RegistrarUsoDTO> = new MatTableDataSource<RegistrarUsoDTO>();
 
-  prod!: Produto;
-  produtoItens!: ProdutoItemEntity[];
-  produtoItemSelecionado!: ProdutoItemEntity;
-
-  unidades!: Observable<Unidade[]>;
-
-  registrarUso: RegistrarUso = {
-    id: '',
-    idProdutoItem: '',
-    idUsuario: '',
-    dataHora: new Date(),
-    idUnidade: '',
-    idParceiro: '',
-    numeroAtendimento: ''
-  };
+  displayedColumns: string[] = [
+    'codigo',
+    'nome',
+    'lote',
+    'dataInicioUso',
+    'unidade',
+    'usuario',
+    'atendimento' 
+  ];
 
   constructor(
-      private produtoService: ProdutoService,
-      private registrarUsoService: RegistrarUsoService,
-      private parceiroService: ParceiroService,
-      private snackBar: MatSnackBar
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private registrarUsoService: RegistrarUsoService
   ) {}
 
-  ngOnInit(): void {
-    this.unidades = this.parceiroService.findAllUnidades();
+  ngOnInit() {
+    this.registrarUsoService.findAll().subscribe((produtosEmUso) => {
+      this.atualizarListaProdutos(produtosEmUso);
+    });
   }
 
-  onSubmit(): void {
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
-    this.registrarUsoService.incluir(this.registrarUso).subscribe((data) => {
-      if (data) {
-        this.openSnackBar('Uso registrado com sucesso!', 'OK', 'success');
+  atualizarListaProdutos(produtosEmUso: RegistrarUsoDTO[]) {
+    this.dataSource = new MatTableDataSource<RegistrarUsoDTO>(produtosEmUso);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(RegistrarUsoDialogComponent, {
+      width: '800px',
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if ('salvar' === result) {
+        this.registrarUsoService
+        .findAll()
+        .subscribe((produtosEmUso) => (this.atualizarListaProdutos(produtosEmUso)));
+        this.openSnackBar('Registrado com sucesso.', 'OK', 'success');
       }
     });
   }
 
-  selecionaProduto(prod: Produto): void {
-    this.prod = prod;
+  novo(): void {
+    this.openDialog();
   }
 
-  limparCampos(): void {
-  }
+  filtrar(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-  buscarItensProduto(): void {
-    if (this.prod && this.prod.id) {
-      this.produtoService
-      .getAllProdutoItens(this.prod.id)
-      .subscribe((data) => {
-        this.produtoItens = data.filter((p) => p.quantidade > 0);
-      }); 
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
     }
   }
-
-  getItemSelecionado(item: MatListOption[]): void {
-      this.produtoItemSelecionado = item.map((o) => o.value)[0];
-    }
 
   openSnackBar(msg: string, btn: string, tipo: string): void {
     this.snackBar.open(msg, btn, {
@@ -90,5 +90,4 @@ export class RegistrarUsoComponent {
       panelClass: tipo,
     });
   }
-
 }

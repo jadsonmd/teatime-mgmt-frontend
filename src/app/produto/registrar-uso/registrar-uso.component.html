@@ -1,70 +1,78 @@
-<div class="center-div">
-  <h1>Registrar Uso</h1>
+<h1>Registrar uso</h1>
 
-  <form class="registrar-uso-form" (onSubmit)="onSubmit()">
-    <div class="produto-input">
-      <app-produto-input
-        (produtoSelecionadoEvent)="selecionaProduto($event)"
-      ></app-produto-input>
-    </div>
-
-    <div class="actions">
-      <button mat-button (click)="buscarItensProduto()">Buscar itens</button>
-    </div>
-
-    <div class="form-fields">
-      <mat-selection-list
-        #itens
-        [multiple]="false"
-        (selectionChange)="getItemSelecionado(itens.selectedOptions.selected)"
-      >
-        <mat-list-option *ngFor="let item of produtoItens" [value]="item">
-          <div>
-            <span>{{ item.lote }}</span>
-            <span>{{ item.dataValidade | date : "dd/MM/yyyy" }}</span>
-            <span>{{ item.quantidade }}</span>
-          </div>
-        </mat-list-option>
-      </mat-selection-list>
-    </div>
-
-    <br />
-
-    <div class="form-fields">
-      <mat-form-field appearance="outline">
-        <mat-label>Unidade</mat-label>
-        <mat-select [(ngModel)]="registrarUso.idUnidade" name="registrarUso.idUnidade">
-          <mat-option
-            *ngFor="let unidade of unidades | async"
-            [value]="unidade.id"
-          >
-            {{ unidade.nome }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="outline" >
-        <mat-label>Data validade</mat-label>
-        <input
-          matInput
-          [matDatepicker]="picker"
-          [(ngModel)]="registrarUso.dataHora"
-          name="registrarUso.dataHora"
-          required
-          appDateMask
-        />
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </div>
-
-    <div class="actions">
-      <button mat-button (click)="limparCampos()">Limpar</button>
-      <button mat-flat-button color="primary" (click)="onSubmit()">
-        Salvar
-      </button>
-    </div>
-  </form>
+<br />
+<div class="menu-botoes">
+  <button mat-flat-button color="primary" (click)="novo()">
+    Registrar uso
+  </button>
 </div>
+
+<div class="center-filter">
+  <mat-form-field appearance="outline">
+    <mat-label>Filtrar</mat-label>
+    <input
+      matInput
+      (keyup)="filtrar($event)"
+      placeholder="Ex. nome do produto"
+      #input
+    />
+  </mat-form-field>
+</div>
+
+<div class="center-table">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <ng-container matColumnDef="id" hidden>
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="codigo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Código</th>
+      <td mat-cell *matCellDef="let element">{{ element.codigoProduto }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+      <td mat-cell *matCellDef="let element">{{ element.nomeProduto }} ({{ element.marcaProduto }})</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lote">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lote</th>
+      <td mat-cell *matCellDef="let element">{{ element.loteProdutoItem }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dataInicioUso">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Data ini. uso</th>
+      <td mat-cell *matCellDef="let element">{{ element.dataHoraRegistroUso | date: 'dd/MM/yyyy' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="unidade">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Unidade</th>
+      <td mat-cell *matCellDef="let element">{{ element.nomeUnidade }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="usuario">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Usuário</th>
+      <td mat-cell *matCellDef="let element">{{ element.nomeUsuario ? element.nomeUsuario : element.emailUsuario }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="atendimento">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Atendimento</th>
+      <td mat-cell *matCellDef="let element">{{ element.numeroAtendimento }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        Não foi possível encontrar registros correspondente ao filtro utilizado.
+        Filtro:"{{ input.value }}"
+      </td>
+    </tr>
+  </table>
+</div>
+<br />
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons> </mat-paginator>
