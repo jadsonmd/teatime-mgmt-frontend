@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 })
 export class CadastroService {
 
-  user: any;
+  user: any; 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };

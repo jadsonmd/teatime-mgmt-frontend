@@ -71,7 +71,6 @@ export class UserInfoComponent implements OnInit {
 
   onSubmit(): void {
     this.parceiroService.saveUsuario(this.userInfo).subscribe((usuario) => {
-      console.log(usuario);
       sessionStorage.setItem('usuario', JSON.stringify(usuario));
       this.router.navigate(['/']);
     });

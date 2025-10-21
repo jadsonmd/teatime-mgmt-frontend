@@ -20,6 +20,7 @@ export class TreeMenuComponent {
         { name: 'Produto', link: '/produto' },
         { name: 'Incluir estoque', link: '/produto/incluir-estoque'},
         { name: 'Baixar estoque', link: '/produto/baixar-estoque'},
+        { name: 'Registrar uso', link: '/produto/registrar-uso'},
         { name: 'Dashboard', link: '/produto/dashboard-produto'},
       ],
     },
