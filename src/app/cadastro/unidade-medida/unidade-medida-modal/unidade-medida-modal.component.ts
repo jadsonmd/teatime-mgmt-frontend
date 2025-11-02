@@ -4,9 +4,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UnidadeMedidaService } from '../../../service/unidade-medida.service';
 
 @Component({
-  selector: 'app-unidade-medida-modal',
-  templateUrl: './unidade-medida-modal.component.html',
-  styleUrl: './unidade-medida-modal.component.scss'
+    selector: 'app-unidade-medida-modal',
+    templateUrl: './unidade-medida-modal.component.html',
+    styleUrl: './unidade-medida-modal.component.scss',
+    standalone: false
 })
 export class UnidadeMedidaModalComponent {
 

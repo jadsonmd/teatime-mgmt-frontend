@@ -4,9 +4,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CadastroService } from '../../../service/cadastro.service';
 
 @Component({
-  selector: 'app-tipo-produto-modal',
-  templateUrl: './tipo-produto-modal.component.html',
-  styleUrl: './tipo-produto-modal.component.scss'
+    selector: 'app-tipo-produto-modal',
+    templateUrl: './tipo-produto-modal.component.html',
+    styleUrl: './tipo-produto-modal.component.scss',
+    standalone: false
 })
 export class TipoProdutoModalComponent {
 

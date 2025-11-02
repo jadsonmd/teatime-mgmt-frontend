@@ -15,13 +15,14 @@ import { CustomDatepicker } from '../../../custom/custom-datepicker';
 import { APP_DATE_FORMATS } from '../../incluir-estoque/incluir-estoque.component';
 
 @Component({
-  selector: 'app-registrar-uso-dialog',
-  templateUrl: './registrar-uso-dialog.component.html',
-  styleUrl: './registrar-uso-dialog.component.scss',
-  providers: [
-    { provide: DateAdapter, useClass: CustomDatepicker },
-    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS },
-  ],
+    selector: 'app-registrar-uso-dialog',
+    templateUrl: './registrar-uso-dialog.component.html',
+    styleUrl: './registrar-uso-dialog.component.scss',
+    providers: [
+        { provide: DateAdapter, useClass: CustomDatepicker },
+        { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS },
+    ],
+    standalone: false
 })
 export class RegistrarUsoDialogComponent {
   prod!: Produto;

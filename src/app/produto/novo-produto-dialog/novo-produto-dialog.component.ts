@@ -13,9 +13,10 @@ import { Fornecedor } from '../../interface/fornecedor';
 import { UnidadeMedida } from '../../interface/unidade-medida';
 
 @Component({
-  selector: 'app-novo-produto-dialog',
-  templateUrl: './novo-produto-dialog.component.html',
-  styleUrl: './novo-produto-dialog.component.scss',
+    selector: 'app-novo-produto-dialog',
+    templateUrl: './novo-produto-dialog.component.html',
+    styleUrl: './novo-produto-dialog.component.scss',
+    standalone: false
 })
 export class NovoProdutoDialogComponent implements OnInit {
   title: string = '';

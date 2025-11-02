@@ -7,9 +7,10 @@ import { EspecieProdutoModalComponent } from './especie-produto-modal/especie-pr
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-especie-produto',
-  templateUrl: './especie-produto.component.html',
-  styleUrl: './especie-produto.component.scss'
+    selector: 'app-especie-produto',
+    templateUrl: './especie-produto.component.html',
+    styleUrl: './especie-produto.component.scss',
+    standalone: false
 })
 export class EspecieProdutoComponent implements OnInit {
 

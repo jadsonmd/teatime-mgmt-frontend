@@ -9,9 +9,10 @@ import { I } from '@angular/cdk/keycodes';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-transferir-estoque-dialog',
-  templateUrl: './transferir-estoque-dialog.component.html',
-  styleUrl: './transferir-estoque-dialog.component.scss'
+    selector: 'app-transferir-estoque-dialog',
+    templateUrl: './transferir-estoque-dialog.component.html',
+    styleUrl: './transferir-estoque-dialog.component.scss',
+    standalone: false
 })
 export class TransferirEstoqueDialogComponent implements OnInit {
   unidades!: Observable<Unidade[]>;

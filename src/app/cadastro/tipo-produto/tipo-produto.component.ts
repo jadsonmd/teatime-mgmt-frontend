@@ -6,9 +6,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-tipo-produto',
-  templateUrl: './tipo-produto.component.html',
-  styleUrl: './tipo-produto.component.scss'
+    selector: 'app-tipo-produto',
+    templateUrl: './tipo-produto.component.html',
+    styleUrl: './tipo-produto.component.scss',
+    standalone: false
 })
 export class TipoProdutoComponent implements OnInit {
 

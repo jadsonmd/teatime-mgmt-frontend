@@ -5,9 +5,10 @@ import { ProdutoService } from '../../service/produto.service';
 import { Produto } from '../../produto/produto';
 
 @Component({
-  selector: 'app-produto-input',
-  templateUrl: './produto-input.component.html',
-  styleUrl: './produto-input.component.scss',
+    selector: 'app-produto-input',
+    templateUrl: './produto-input.component.html',
+    styleUrl: './produto-input.component.scss',
+    standalone: false
 })
 export class ProdutoInputComponent {
   stateCtrl = new FormControl('');

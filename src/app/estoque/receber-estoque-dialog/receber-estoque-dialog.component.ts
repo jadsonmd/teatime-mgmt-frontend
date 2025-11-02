@@ -7,9 +7,10 @@ import { ReceberEstoqueDTO } from '../../interface/dto/receber-estoque-dto';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-receber-estoque-dialog',
-  templateUrl: './receber-estoque-dialog.component.html',
-  styleUrl: './receber-estoque-dialog.component.scss',
+    selector: 'app-receber-estoque-dialog',
+    templateUrl: './receber-estoque-dialog.component.html',
+    styleUrl: './receber-estoque-dialog.component.scss',
+    standalone: false
 })
 export class ReceberEstoqueDialogComponent implements OnInit {
   observacao: string = '';

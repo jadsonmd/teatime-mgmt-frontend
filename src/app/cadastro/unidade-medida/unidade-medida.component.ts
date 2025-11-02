@@ -6,9 +6,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { UnidadeMedidaModalComponent } from './unidade-medida-modal/unidade-medida-modal.component';
 
 @Component({
-  selector: 'app-unidade-medida',
-  templateUrl: './unidade-medida.component.html',
-  styleUrl: './unidade-medida.component.scss'
+    selector: 'app-unidade-medida',
+    templateUrl: './unidade-medida.component.html',
+    styleUrl: './unidade-medida.component.scss',
+    standalone: false
 })
 export class UnidadeMedidaComponent implements OnInit {
 

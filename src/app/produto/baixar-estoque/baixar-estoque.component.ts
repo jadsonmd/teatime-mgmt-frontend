@@ -7,9 +7,10 @@ import { MatListOption } from '@angular/material/list';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-baixar-estoque',
-  templateUrl: './baixar-estoque.component.html',
-  styleUrl: './baixar-estoque.component.scss',
+    selector: 'app-baixar-estoque',
+    templateUrl: './baixar-estoque.component.html',
+    styleUrl: './baixar-estoque.component.scss',
+    standalone: false
 })
 export class BaixarEstoqueComponent {
   produtoItem: GerenciarEstoqueDTO = {

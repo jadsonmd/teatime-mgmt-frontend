@@ -9,9 +9,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
 @Component({
-  selector: 'app-produto',
-  templateUrl: './produto.component.html',
-  styleUrl: './produto.component.scss',
+    selector: 'app-produto',
+    templateUrl: './produto.component.html',
+    styleUrl: './produto.component.scss',
+    standalone: false
 })
 export class ProdutoComponent implements OnInit, AfterViewInit {
 

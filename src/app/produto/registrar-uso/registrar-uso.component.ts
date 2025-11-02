@@ -10,9 +10,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { RegistrarUsoDTO } from '../../interface/dto/registrar-uso-dto';
 
 @Component({
-  selector: 'app-registrar-uso',
-  templateUrl: './registrar-uso.component.html',
-  styleUrl: './registrar-uso.component.scss',
+    selector: 'app-registrar-uso',
+    templateUrl: './registrar-uso.component.html',
+    styleUrl: './registrar-uso.component.scss',
+    standalone: false
 })
 export class RegistrarUsoComponent implements OnInit, AfterViewInit {
   

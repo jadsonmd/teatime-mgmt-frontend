@@ -4,9 +4,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FornecedorService } from '../../../service/fornecedor.service';
 
 @Component({
-  selector: 'app-fornecedor-modal',
-  templateUrl: './fornecedor-modal.component.html',
-  styleUrl: './fornecedor-modal.component.scss'
+    selector: 'app-fornecedor-modal',
+    templateUrl: './fornecedor-modal.component.html',
+    styleUrl: './fornecedor-modal.component.scss',
+    standalone: false
 })
 export class FornecedorModalComponent {
 

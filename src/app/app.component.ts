@@ -5,9 +5,10 @@ import { UsuarioService } from './service/usuario.service';
 import { DOCUMENT } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    standalone: false
 })
 export class AppComponent implements OnInit {
   title = 'teatime-mgmt-frontend';

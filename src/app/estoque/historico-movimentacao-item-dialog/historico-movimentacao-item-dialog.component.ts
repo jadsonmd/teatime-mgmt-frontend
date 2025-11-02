@@ -5,9 +5,10 @@ import { TransferenciaEstoqueDetalhe } from '../../interface/transferencia-estoq
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-historico-movimentacao-item-dialog',
-  templateUrl: './historico-movimentacao-item-dialog.component.html',
-  styleUrl: './historico-movimentacao-item-dialog.component.scss'
+    selector: 'app-historico-movimentacao-item-dialog',
+    templateUrl: './historico-movimentacao-item-dialog.component.html',
+    styleUrl: './historico-movimentacao-item-dialog.component.scss',
+    standalone: false
 })
 export class HistoricoMovimentacaoItemDialogComponent implements OnInit {
 

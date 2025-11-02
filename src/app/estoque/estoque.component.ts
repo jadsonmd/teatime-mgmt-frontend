@@ -13,9 +13,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { TransferenciaEstoque } from '../interface/transferencia-estoque';
 
 @Component({
-  selector: 'app-estoque',
-  templateUrl: './estoque.component.html',
-  styleUrl: './estoque.component.scss',
+    selector: 'app-estoque',
+    templateUrl: './estoque.component.html',
+    styleUrl: './estoque.component.scss',
+    standalone: false
 })
 export class EstoqueComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [

@@ -2,7 +2,8 @@ import { Directive, HostListener } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 @Directive({
-  selector: '[appDateMask]'
+    selector: '[appDateMask]',
+    standalone: false
 })
 export class DateMaskDirective {
 

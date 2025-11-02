@@ -7,9 +7,10 @@ import { Router } from '@angular/router';
 import { Unidade } from '../../interface/unidade';
 
 @Component({
-  selector: 'app-user-info',
-  templateUrl: './user-info.component.html',
-  styleUrl: './user-info.component.scss'
+    selector: 'app-user-info',
+    templateUrl: './user-info.component.html',
+    styleUrl: './user-info.component.scss',
+    standalone: false
 })
 export class UserInfoComponent implements OnInit {
 

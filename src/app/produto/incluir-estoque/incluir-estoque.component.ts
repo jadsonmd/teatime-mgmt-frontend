@@ -19,13 +19,14 @@ export const APP_DATE_FORMATS: MatDateFormats = {
 };
 
 @Component({
-  selector: 'app-incluir-estoque',
-  templateUrl: './incluir-estoque.component.html',
-  styleUrl: './incluir-estoque.component.scss',
-  providers: [
-    { provide: DateAdapter, useClass: CustomDatepicker },
-    { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS },
-  ],
+    selector: 'app-incluir-estoque',
+    templateUrl: './incluir-estoque.component.html',
+    styleUrl: './incluir-estoque.component.scss',
+    providers: [
+        { provide: DateAdapter, useClass: CustomDatepicker },
+        { provide: MAT_DATE_FORMATS, useValue: APP_DATE_FORMATS },
+    ],
+    standalone: false
 })
 export class IncluirEstoqueComponent {
   produtoItem: GerenciarEstoqueDTO = {

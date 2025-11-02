@@ -3,9 +3,10 @@ import { DashboardProdutoService } from '../../service/dashboard-produto.service
 import { find } from 'rxjs';
 
 @Component({
-  selector: 'app-dashboard-produto',
-  templateUrl: './dashboard-produto.component.html',
-  styleUrl: './dashboard-produto.component.scss'
+    selector: 'app-dashboard-produto',
+    templateUrl: './dashboard-produto.component.html',
+    styleUrl: './dashboard-produto.component.scss',
+    standalone: false
 })
 export class DashboardProdutoComponent {
 

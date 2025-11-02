@@ -6,10 +6,11 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-tree-menu',
-  templateUrl: './tree-menu.component.html',
-  styleUrl: './tree-menu.component.scss',
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-tree-menu',
+    templateUrl: './tree-menu.component.html',
+    styleUrl: './tree-menu.component.scss',
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class TreeMenuComponent {
   TREE_DATA: TreeMenu[] = [
